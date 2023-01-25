@@ -1,6 +1,4 @@
-# Visiology
-
-# Расширения для виджетов
+# Visiology custom code
 
 ## 1. Pie chart
 
