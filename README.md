@@ -1,5 +1,11 @@
 # Visiology vidget modifications
 
+## Line marker symbol
+
+```
+w.series[0].marker.symbol = 'circle';
+```
+
 ## Plot band
 ```
 w.yAxis.plotBands = {color: "red", from:0.9, to: 1.1};
