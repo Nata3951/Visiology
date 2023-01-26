@@ -1,6 +1,9 @@
 # Visiology vidget modifications
 
-
+## Plot band
+```
+w.yAxis.plotBands = {color: "red", from:0.9, to: 1.1};
+```
 
 ## 100. Круговая диаграмма
 
