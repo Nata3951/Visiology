@@ -1,5 +1,10 @@
 # Visiology vidget modifications
 
+## Text card sort by index
+```javascript
+w.general.text = "Данные обновлены " + w.data.rows.sort((a,b) => a > b ? -1 : 1  )[0];
+```
+
 ## Text card format
 ```
 Math.round(@value/1000000).toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ')  + `<br\>
