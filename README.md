@@ -1,5 +1,12 @@
 # Visiology vidget modifications
 
+## Text card format
+```
+Math.round(@value/1000000).toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ')  + `<br\>
+<div style="color:black; font-size:15px">Запланировано оплат</div> 
+<div style="color:grey; font-size:15px">(млн руб.) </div>`
+```
+
 ## Line marker symbol
 
 ```
