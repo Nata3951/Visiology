@@ -25,16 +25,28 @@ $("#" + w.general.renderTo + " .rb-filter-select-all-button").css({'background-c
 $("#" + w.general.renderTo + " .rb-filter-unselect-all-button").css({'background-color': 'green'});
 
 
-// кнопка отмена
-$("#" + w.general.renderTo + " .rb-filter-cancel-button").css({'background-color': 'tomato'});
 
 // кнопка применить
 $("#" + w.general.renderTo + " .rb-filter-apply-button").css({'background-color': 'green'});
+
+// кнопка отмена
+$("#" + w.general.renderTo + " .rb-filter-cancel-button").css({'background-color': 'tomato'});
 
 // весь выпадающий фильтр
 rb-filter-body-container
 
 // видимое всегда окошко фильтра
 rb-filter-header-container
-```
 
+#### 150.150 Размер шрифта на кнопках
+```javascript
+// Уменьшаем размер шрифта на кнопках
+// кнопка Выбрать отображаемые
+$("#" + w.general.renderTo + " .rb-filter-select-all-button").css({'font-size': '10px'});
+// кнопка Снять выделение
+$("#" + w.general.renderTo + " .rb-filter-unselect-all-button").css({'font-size': '10px'});
+// кнопка применить
+$("#" + w.general.renderTo + " .rb-filter-apply-button").css({'font-size': '10px'});
+// кнопка отмена
+$("#" + w.general.renderTo + " .rb-filter-cancel-button").css({'font-size': '10px'});
+```
