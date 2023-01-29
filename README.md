@@ -2,7 +2,7 @@
 
 ## Check if value is number and format number
 ```javascript
-typeof @value == 'number' ? Math.round(@value).toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ') : @value
+typeof @value == 'number' ? @value.toFixed(1).replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ') : @value
 ```
 
 ## Text card sort by index
