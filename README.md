@@ -1,5 +1,11 @@
 # Visiology vidget modifications
 
+## Плоская таблица
+### пофиксить пустые страницы, если пользователь меняет количество строк к показу, и на обновленной странице нет данных
+```javascript
+w.dataGridOptions.remoteOperations = false   
+```
+
 ## Check if value is number and format number
 ```javascript
 typeof @value == 'number' ? @value.toFixed(1).replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ') : @value
