@@ -27,12 +27,43 @@ w.general.text = "Данные обновлены " + w.data.rows.sort((a,b) => 
 ```
 
 ### Text card format
+
+#### в свойствах
 ```
 Math.round(@value/1000000).toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ')  + `<br\>
 <div style="color:black; font-size:15px">Запланировано оплат</div> 
 <div style="color:grey; font-size:15px">(млн руб.) </div>`
 
 @value < 0 ? (@value * 100).toFixed() +'%' :  '<div style = "color:green">' + (@value * 100).toFixed()+'%</div>'
+
+```
+
+#### JS code
+
+```javascript
+
+let fact = w.data.values[0][0].toFixed(1);
+let plan = w.data.values[1][0].toFixed(1);
+
+if (+fact > +plan) {
+    
+    w.general.text =(
+        '<div>' + fact 
+        + '</div><div style="color:grey; font-size:16px;line-height: 25px;">' + plan + '</div>'
+        );
+    
+    } else {
+       w.general.text =(
+        '<div style="color:coral;  ">' + fact 
+        + '</div><div style="color:black; font-size:16px; font-weight:bold; line-height: 25px;">' + plan + '</div>'
+        );
+    }
+
+
+TextRender({
+    text: w.general,
+    style: w.style
+});
 
 ```
 
