@@ -11,12 +11,22 @@ w.dataGridOptions.remoteOperations = false
 typeof @value == 'number' ? @value.toFixed(1).replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ') : @value
 ```
 
-## Text card sort by index
+## Текстовый виджет
+
+### обращение к данным текстового виджета
+```javascript
+w.general.text = w.data.cols[0] + w.data.cols[1]; // названия колонок
+w.general.text = w.data.rows[0]; // названия строк
+w.general.text =w.data.values[0][0] + w.data.values[1][0];  // значения, [col][row]
+
+```
+
+### Text card sort by index
 ```javascript
 w.general.text = "Данные обновлены " + w.data.rows.sort((a,b) => a > b ? -1 : 1  )[0];
 ```
 
-## Text card format
+### Text card format
 ```
 Math.round(@value/1000000).toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ')  + `<br\>
 <div style="color:black; font-size:15px">Запланировано оплат</div> 
