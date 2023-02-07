@@ -193,3 +193,25 @@ thHeader.style.background = '#fff'
 thHeader.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)'
 thHeader.style.height = '50px'
 document.querySelectorAll('#widget-' + w.general.renderTo + ' thead th')[sparklineSetColumn].after(thHeader)
+
+## Number with spaces
+
+// вставляем пробелы и округляем цифры 
+
+
+function numberWithSpaces(x) {
+  var parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  let tail = parts[1] ? parts[1].slice(0,1) : 0;
+  return parts[0]+'.'+ tail;
+}
+
+[4].forEach(function(j) {
+    $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
+        var value = +td.innerHTML;
+        td.innerText = numberWithSpaces(td.innerText); 
+        $(td).css({
+            'text-align': 'right',
+        });
+    }); 
+}); 
