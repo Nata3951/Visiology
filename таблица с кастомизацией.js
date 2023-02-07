@@ -1,3 +1,4 @@
+```javascript
 var cssimg = '';
 
 // сортировка по первой колонке
@@ -24,55 +25,25 @@ $('#table-' + w.general.renderTo + ' th:nth-child(1)')
 .css({
     "text-align": "center"
 });
-$('#table-' + w.general.renderTo + ' th:nth-child(1)')
-.text('№')
-.css({
-    "text-align": "center"
-});
+
 $('#table-' + w.general.renderTo + ' th:nth-child(2)')
 .text('Наименование показателя')
 .css({
     "text-align": "center"
 });
-$('#table-' + w.general.renderTo + ' th:nth-child(3)')
-.text('Ед. измерения')
-.css({
-    "text-align": "center"
-});
-$('#table-' + w.general.renderTo + ' th:nth-child(4)')
-.text('Целевое значение 2023 г.')
-.css({
-    "text-align": "center"
-});
-$('#table-' + w.general.renderTo + ' th:nth-child(5)')
-.text('I кв.')
-.css({
-    "text-align": "center"
-});
-$('#table-' + w.general.renderTo + ' th:nth-child(6)')
-.text('II кв.')
-.css({
-    "text-align": "center"
-});
-$('#table-' + w.general.renderTo + ' th:nth-child(7)')
-.text('III кв.')
-.css({
-    "text-align": "center"
-});
-$('#table-' + w.general.renderTo + ' th:nth-child(8)')
-.text('IV кв.')
-.css({
-    "text-align": "center"
-});
+
+// фиксируем шапку
 $('#table-' + w.general.renderTo).css({'border-collapse':'collapse'});
 document.getElementById("grid-"+ w.general.renderTo).addEventListener("scroll", function(){
    var translate = "translate(0,"+this.scrollTop+"px)";
    this.querySelector("thead").style.transform = translate;
 });
-$('#table-' + w.general.renderTo + ' th:nth-child(1)')
-.css({
-    "width":"300px"
-});
+
+// запрещаем перенос строк и прячем остаток строки
+$('#table-' + w.general.renderTo + ' td')
+.css({"overflow":"hidden", 'white-space':'nowrap'})
+
+// ширина колонок
 $('#table-' + w.general.renderTo + ' th:nth-child(1)')
 .css({
     "width":"100px"
@@ -90,10 +61,13 @@ $('#table-' + w.general.renderTo + ' th:nth-child(4)')
     "width":"250px"
 });
 
+// добавляем высоту строк
 $('#table-' + w.general.renderTo + ' tbody > tr > td').css({
     'margin-block-start': '0',
     'padding':'7px 10px'
 });
+
+// форматирование колонок
 [1].forEach(function(j) {
     $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
         var value = +td.innerHTML;
@@ -196,3 +170,4 @@ $('#table-' + w.general.renderTo + ' th:last-child').css({
 $('#table-' + w.general.renderTo + ' tbody > tr > td:last-child').css({
     'display': 'none'
 });
+```
