@@ -1,22 +1,4 @@
 var indicListId = '774219d065f84efa9478d9fc73289142';
-let fact = w.data.values[0][0].toFixed(1);
-let plan = w.data.values[1][0].toFixed(1);
-let unit = " млрд руб.";
-
-if (+fact >= +plan) {
-    
-    w.general.text =(
-        '<div style="margin-left:20px; ">' + fact  + '<b style=" font-size:20px; font-weight:600; margin-left:5px;">' + unit + '</b>'
-        + '</div><div style="margin-left:20px; font-size:16px; color:grey; font-weight:500;">' + plan + unit + '</div>'
-        );
-    
-    } else {
-       w.general.text =(
-        '<div style="color:tomato; margin-left:20px;">' + fact  + '<b style="color:tomato; font-weight:600; font-size:20px; margin-left:5px;">' + unit + '</b>'
-        + '</div><div style="color:grey;  font-size:16px; font-weight:500;  margin-left:20px;">' + plan + unit + '</div>'
-        );
-    }
-
 
 TextRender({
     text: w.general,
