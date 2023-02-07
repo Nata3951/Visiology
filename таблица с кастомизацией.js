@@ -167,7 +167,29 @@ $('#table-' + w.general.renderTo + ' th').css({
 $('#table-' + w.general.renderTo + ' th:last-child').css({
     'display': 'none'
 });
+
 $('#table-' + w.general.renderTo + ' tbody > tr > td:last-child').css({
     'display': 'none'
 });
 ```
+
+// Добавляем доп.столбец в заголовок
+let colSparkLineName = ''
+if (periodValue === 'year') {
+    colSparkLineName = 'годам'
+}
+if (periodValue === 'quartal') {
+    colSparkLineName = 'кварталам'
+}
+if (periodValue === 'month') {
+    colSparkLineName = 'месяцам'
+}
+if (periodValue === 'week') {
+    colSparkLineName = 'неделям'
+}
+const thHeader = document.createElement('th')
+thHeader.innerHTML = `<span style="font-family: ${w.style.header.textStyle.fontFamily}">По ${colSparkLineName}</br> <span style="color:#1c4680"> ● </span> план,<span style="color:#ba68c8"> ● </span> факт </span>`
+thHeader.style.background = '#fff'
+thHeader.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)'
+thHeader.style.height = '50px'
+document.querySelectorAll('#widget-' + w.general.renderTo + ' thead th')[sparklineSetColumn].after(thHeader)
