@@ -1,4 +1,3 @@
-```javascript
 var cssimg = '';
 
 // сортировка по первой колонке
@@ -171,7 +170,6 @@ $('#table-' + w.general.renderTo + ' th:last-child').css({
 $('#table-' + w.general.renderTo + ' tbody > tr > td:last-child').css({
     'display': 'none'
 });
-```
 
 // Добавляем доп.столбец в заголовок
 let colSparkLineName = ''
