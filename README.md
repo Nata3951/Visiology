@@ -1,5 +1,16 @@
 # Visiology vidget modifications
 
+## Таблица
+
+```javascript
+\\ стиль шрифта заголовка
+thHeader.style.font = 'bold 12px sans-serif ';
+
+
+\\ раскрасить ячейки
+<div style="color: ${data[2][el] < 0 ? '#93a4ad' : '#49aff8'}" class="table-body-element table-body-element-value">${data[2][el] < 0 ? data[2][el] : `+${data[2][el]}`}</div>
+```
+
 ## Плоская таблица
 NB единственное преимущество плоской таблицы - прогружает не весь датасет, а постранично. Плохо кастомизируется. По умолчанию лучше использовать обычную таблицу. 
 
