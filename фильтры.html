@@ -1,0 +1,84 @@
+## 150. Фильтры
+
+#### 150.100 Элементы
+
+```javascript
+// скрытие радиобаттонов выбора "включить" и "исключить"
+$('#'+ w.general.renderTo +' div.rb-filter-exclude-container').css({'display': 'none'});
+
+// кнопка Выбрать отображаемые
+$("#" + w.general.renderTo + " .rb-filter-select-all-button").css({'background-color': 'tomato'});
+
+// кнопка Снять выделение
+$("#" + w.general.renderTo + " .rb-filter-unselect-all-button").css({'background-color': 'green'});
+
+
+
+// кнопка применить
+$("#" + w.general.renderTo + " .rb-filter-apply-button").css({'background-color': 'green'});
+
+// кнопка отмена
+$("#" + w.general.renderTo + " .rb-filter-cancel-button").css({'background-color': 'tomato'});
+
+// весь выпадающий фильтр
+rb-filter-body-container
+
+// видимое всегда окошко фильтра
+rb-filter-header-container
+```
+
+#### 150.150 Размер шрифта на кнопках
+
+```javascript
+// Уменьшаем размер шрифта на кнопках
+// кнопка Выбрать отображаемые
+$("#" + w.general.renderTo + " .rb-filter-select-all-button").css({'font-size': '10px'});
+// кнопка Снять выделение
+$("#" + w.general.renderTo + " .rb-filter-unselect-all-button").css({'font-size': '10px'});
+// кнопка применить
+$("#" + w.general.renderTo + " .rb-filter-apply-button").css({'font-size': '10px'});
+// кнопка отмена
+$("#" + w.general.renderTo + " .rb-filter-cancel-button").css({'font-size': '10px'});
+```
+
+
+### Зависимость 
+
+В: Есть два листа:
+на первом листе есть фильтр по годам,где можно выбирать несколько значений (Например 2021,2020 год)
+А на втором тоже есть фильтр по годам, но этот фильтр должен зависеть от фильтра с первого листа (если на первом выбирают 2021,2020, то на втором должен 2021 год, то есть последний год первого фильтра)
+
+О: в основной фильтр в конец код
+```javascript
+visApi().onSelectedValuesChangedListener({widgetGuid: w.general.renderTo, guid: "123456"}, function (info) {
+    localStorage.setItem('val', info.selectedValues[0]);
+})
+```
+
+во второй тоже в конец
+```javascript
+visApi().setFilterSelectedValues(w.general.renderTo, [[localStorage.getItem('val')]])
+```
+В: Еще уточнение: 
+selectedValues[1]- забирает первое значение в массиве, а как написать,чтобы он сравнивал со вторым значением и забирал большее значение
+Потому что надо, если в первом фильтре выбрано (2021,2020), надо чтобы был больший год (2021), а 2021 может быть в  Values[0]
+
+
+О: на главный (первый) фильтр можете добавить это перед передачей значения
+а после уже "imax" передать на второй
+
+```javascript
+let iSelected = [];
+for(let i = 0; i < w.data.selected.length; i++) {
+    iSelected.push(w.data.selected[i].text);
+}
+
+function getMaxOfArray(numArray) {
+  return Math.max.apply(null, numArray);
+}
+
+let imax = getMaxOfArray(iSelected);
+alert(imax);
+```                                          
+
+
