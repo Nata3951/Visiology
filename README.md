@@ -4,6 +4,8 @@
 
 ```javascript
 \\ стиль шрифта заголовка
+const thHeader = document.createElement('th')
+thHeader.innerHTML = `<span>По ${colSparkLineName}</br> <span style="color:#1c4680"> ● </span> план,<span style="color:#ba68c8"> ● </span> факт </span>`;
 thHeader.style.font = 'bold 12px sans-serif ';
 
 
