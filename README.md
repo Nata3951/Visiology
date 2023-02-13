@@ -1,5 +1,10 @@
 # Visiology vidget modifications
 
+## Ссылки
+&showNav=true   показывает навигацию по страницам
+
+https://portal/viewer/public?dashboardGuid=575867ee1f43d637074f0d0&showNav=true&fit=true
+
 ## Таблица
 
 ```javascript
