@@ -1,3 +1,30 @@
+
+// ---------------------------------------------
+
+window.render1 = function (dynamics) {
+    console.log("10 лучших", w)
+    w.data.columns[0].captions[0] = "Филиал|Подразделение";
+    w.data.columns[1].captions[0] = "Дин";
+    w.data.colNames[0] = "Дин";
+    
+
+    TableRender({
+        table: w.general,
+        style: w.style,
+        columns: w.data.columns,
+        records: dynamics,
+        editMask: w.data.editMask,
+        rowNames: w.data.rowNames,
+        colNames: w.data.colNames,
+        showToolbar: false
+    });  
+    
+    $("#" + "table-" + w.general.renderTo).find("th:nth-child(2)").css( "width", "50px");
+    $('td').css({"padding": "2px"});
+    document.querySelectorAll("#table-" + w.general.renderTo + " > tbody > tr").forEach(el => el.children[1].innerText > 0 ? el.children[1].style.color = "#4caf50" : el.children[1].style.color = "#ff8a80")
+
+// ---------------------------------------------
+
 var cssimg = '';
 
 // сортировка по первой колонке
