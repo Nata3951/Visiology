@@ -21,7 +21,7 @@ widget.onclick = widget.onmouseover = widget.onmouseout = (event) => {
             
         // });
            
-            const data = ["Средний балл по филиалу = средний балл по всем РЭС филиала наиболее позднего периода, деленный на кол-во РЭС филиала в этом периоде."];
+            const data = ["Средний балл по филиалу = средний балл ...."];
             // pivotGridOptions.dataSource._data.values[1][0][0]
             // pivotGridOptions.dataSource._data.values[1][0].originalCell[0]
             
