@@ -1,5 +1,9 @@
 # Visiology vidget modifications
 
+## Вывод объекта в консоль
+
+console.log("output name", w) --> можно отфильтровать вывод
+
 ## Ссылки
 &showNav=true   показывает навигацию по страницам
 
