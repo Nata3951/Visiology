@@ -11,6 +11,25 @@ console.log("output name", w) \\ можно отфильтровать выво�
 ```javascript
 let filterValue = visApi().getSelectedValues("5e8ff6bd76524e5b96aadb265211be19")
 ```
+### Изменение цвета факта в зависимости от плана
+
+```javascript
+// GuId виджета "План"
+const planGuId = '43bfa42ef4364cf3814e6f35393995f8';
+
+visApi().getWidgetDataByGuid(planGuId).then(function (widgetData) {
+    const planValue = widgetData.data.values.length ? widgetData.data.values[0][0] : 0
+    const thisFactValue = w.data.values.length ? w.data.values[0][0] : 0
+    console.log(planValue, thisFactValue, w)
+    
+    w.style.color = planValue > thisFactValue ? 'tomato' : 'green'
+    
+    TextRender({
+        text: w.general,
+        style: w.style
+    });    
+});
+```
 
 ## Ссылки на страницу дашборда
 &showNav=true   показывает навигацию по страницам
