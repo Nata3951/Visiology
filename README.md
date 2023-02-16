@@ -6,7 +6,13 @@
 console.log("output name", w) \\ можно отфильтровать вывод
 ```
 
-## Ссылки
+## Обращение к данным другого виджета
+
+```javascript
+let filterValue = visApi().getSelectedValues("5e8ff6bd76524e5b96aadb265211be19")
+```
+
+## Ссылки на страницу дашборда
 &showNav=true   показывает навигацию по страницам
 
 https://portal/viewer/public?dashboardGuid=575867ee1f43d637074f0d0&showNav=true&fit=true
