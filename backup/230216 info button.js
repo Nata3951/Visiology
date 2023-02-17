@@ -16,15 +16,10 @@ const widget = document.querySelector('#widget-' + w.general.renderTo)
 widget.onclick = widget.onmouseover = widget.onmouseout = (event) => {
     if (event.type == 'mouseover' || event.type == 'click') {
         // visApi().getWidgetDataByGuid(dataGuId).then(function (widgetData) {
-        //     // const data = widgetData.data.values[1][0][0].filter(el => el);
-        //       const data = widgetData.data.values[colIndex].filter(el => el);
-            
+        //       const data = widgetData.data.values[colIndex].filter(el => el);           
         // });
            
-            const data = ["Средний балл по филиалу = средний балл ...."];
-            // pivotGridOptions.dataSource._data.values[1][0][0]
-            // pivotGridOptions.dataSource._data.values[1][0].originalCell[0]
-            
+            const data = ["Средний балл по филиалу = средний балл ...."];           
             const targetState = visApi().getWidgetByGuid(w.general.renderTo)
             const targetX = targetState.x() - 330
             const targetY = targetState.y()+35 
