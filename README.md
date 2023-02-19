@@ -1,5 +1,50 @@
 # Visiology vidget modifications
 
+## Подсветка элемента, выбранного на фильтре, столбчатая диаграмма с одной серией
+
+blob:https://web.telegram.org/f3f66671-615a-491a-b8e1-d45306e43370
+
+```javascript
+var subscribeN = '1234',
+filterGuid = 'eb06a1ff3e3b42fcb08cc2343ea8163d';
+visApi().onSelectedValuesChangedListener({guid: subscribeN, widgetGuid: filterGuid }, function (info) {
+    if (info.selectedValues.length == 1) {
+        hChart.series[0].data.forEach(function(data){
+            data.update({
+                color: info.selectedValues[0][0] == data.name ? '#ffc106' : ''
+            });
+        });
+    } else {
+        hChart.series[0].data.forEach(function(data){
+            data.update({
+                color: ''
+            });
+        });
+    }
+});
+```
+
+## дополнительная ось для серии
+
+```javascript
+w.series[id].yAxis = 1; // до кода виджета
+```
+
+## Подсчет уникальных значений
+
+```javascript
+function unique(arr) {
+  return Array.from(new Set(arr));
+}
+
+w.general.text = unique(w.data.values);
+
+TextRender({
+    text: w.general,
+    style: w.style
+});
+```
+
 ## Вывод объекта в консоль
 
 ```javascript
