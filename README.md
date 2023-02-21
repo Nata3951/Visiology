@@ -1,5 +1,9 @@
 # Visiology vidget modifications
 
+## Управление основными параметрами виджета
+
+w.general.type = 'spline';
+
 ## Подсветка элемента, выбранного на фильтре, столбчатая диаграмма с одной серией
 
 blob:https://web.telegram.org/f3f66671-615a-491a-b8e1-d45306e43370
