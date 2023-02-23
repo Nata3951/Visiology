@@ -65,6 +65,11 @@ document.getElementById("grid-"+ w.general.renderTo).addEventListener("scroll", 
    this.querySelector("thead").style.transform = translate;
 });
 
+// переименовываем верхний уровень шапки
+$("#table-"+w.general.renderTo+" > thead > tr.tablesorter-ignoreRow > th:nth-child(2) > div > span:nth-child(1)")[0].innerText = w.data.colNames[3][0];
+$("#table-"+w.general.renderTo+" > thead > tr.tablesorter-ignoreRow > th:nth-child(5) > div > span:nth-child(1)")[0].innerText = w.data.colNames[0][0];
+    
+    
 // запрещаем перенос строк и прячем остаток строки
 $('#table-' + w.general.renderTo + ' td')
 .css({"overflow":"hidden", 'white-space':'nowrap'})
