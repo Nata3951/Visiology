@@ -34,6 +34,14 @@ visApi().onSelectedValuesChangedListener({guid: subscribeN, widgetGuid: filterGu
 w.series[id].yAxis = 1; // до кода виджета
 ```
 
+## Нормализация
+
+```javascript
+wDup.series.forEach((seriesElem, ind) => { 
+    seriesElem.data.forEach(el => el.y = (el.y / arr[ind]) * 100)
+});
+```
+
 ## Подсчет уникальных значений
 
 ```javascript
