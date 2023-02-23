@@ -34,7 +34,9 @@ visApi().onSelectedValuesChangedListener({guid: subscribeN, widgetGuid: filterGu
 w.series[id].yAxis = 1; // до кода виджета
 ```
 
-## Нормализация
+## Массивы
+
+### Нормализация
 
 ```javascript
 wDup.series.forEach((seriesElem, ind) => { 
@@ -42,7 +44,7 @@ wDup.series.forEach((seriesElem, ind) => {
 });
 ```
 
-## Подсчет уникальных значений
+### Подсчет уникальных значений
 
 ```javascript
 function unique(arr) {
@@ -56,6 +58,21 @@ TextRender({
     style: w.style
 });
 ```
+
+### поменять местами столбцы
+
+```javascript
+let wDup = JSON.parse(JSON.stringify(w));
+
+w.data.records.forEach((el, ind) => {
+    el['column 0'] = wDup.data.records[ind]['column 3'];
+    el['column 1'] = wDup.data.records[ind]['column 4'];
+    el['column 2'] = wDup.data.records[ind]['column 5'];
+    el['column 3'] = wDup.data.records[ind]['column 3'] - wDup.data.records[ind]['column 0'];
+    el['column 4'] = wDup.data.records[ind]['column 4'] - wDup.data.records[ind]['column 1'];
+    el['column 5'] = wDup.data.records[ind]['column 5'] - wDup.data.records[ind]['column 2'];
+});
+```javascript
 
 ## Вывод объекта в консоль
 
