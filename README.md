@@ -112,16 +112,31 @@ https://portal/viewer/public?dashboardGuid=575867ee1f43d637074f0d0&showNav=true&
 
 ## Таблица
 
+### стиль шрифта заголовка
+
 ```javascript
-\\ стиль шрифта заголовка
 const thHeader = document.createElement('th')
 thHeader.innerHTML = `<span>По ${colSparkLineName}</br> <span style="color:#1c4680"> ● </span> план,<span style="color:#ba68c8"> ● </span> факт </span>`;
 thHeader.style.font = 'bold 12px sans-serif ';
-
-
-\\ раскрасить ячейки
-<div style="color: ${data[2][el] < 0 ? '#93a4ad' : '#49aff8'}" class="table-body-element table-body-element-value">${data[2][el] < 0 ? data[2][el] : `+${data[2][el]}`}</div>
 ```
+
+### раскрасить ячейки
+```javascript
+<div style="color: ${data[2][el] < 0 ? '#93a4ad' : '#49aff8'}" class="table-body-element table-body-element-value">${data[2][el] < 0 ? data[2][el] : `+${data[2][el]}`}</div>
+
+// v2
+[5,6,7].forEach(function(j) {
+    $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
+        $(td).css({
+            'color': 
+                td.innerText < 0 ? '#ff595a' : 
+                td.innerText === 0 ? '#49aff8' : '#56ad83'
+        });
+    }); 
+});
+
+```
+
 
 ## Плоская таблица
 NB единственное преимущество плоской таблицы - прогружает не весь датасет, а постранично. Плохо кастомизируется. По умолчанию лучше использовать обычную таблицу. 
