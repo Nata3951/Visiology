@@ -1,8 +1,14 @@
 # Visiology vidget modifications
 
-## Управление основными параметрами виджета
+### замена текста в series.name
+```javascript
+wDup.series.forEach(series => series.name = series.name.replace("Количество РЭС - ",""));
+```
 
+## Управление основными параметрами виджета
+```javascript
 w.general.type = 'spline';
+```
 
 ## Подсветка элемента, выбранного на фильтре, столбчатая диаграмма с одной серией
 
