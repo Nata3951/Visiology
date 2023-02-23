@@ -78,14 +78,6 @@ $('#table-' + w.general.renderTo + ' th:nth-child(2)')
 .css({
     "width":"500px"
 });
-$('#table-' + w.general.renderTo + ' th:nth-child(3)')
-.css({
-    "width":"200px"
-});
-$('#table-' + w.general.renderTo + ' th:nth-child(4)')
-.css({
-    "width":"250px"
-});
 
 // добавляем высоту строк
 $('#table-' + w.general.renderTo + ' tbody > tr > td').css({
@@ -226,9 +218,9 @@ document.querySelectorAll('#widget-' + w.general.renderTo + ' thead th')[sparkli
 
 function numberWithSpaces(x) {
   var parts = x.toString().split(".");
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  let head = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   let tail = parts[1] ? parts[1].slice(0,1) : 0;
-  return parts[0]+'.'+ tail;
+  return head +'.'+ tail;
 }
 
 [4].forEach(function(j) {
