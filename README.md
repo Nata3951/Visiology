@@ -72,7 +72,7 @@ w.data.records.forEach((el, ind) => {
     el['column 4'] = wDup.data.records[ind]['column 4'] - wDup.data.records[ind]['column 1'];
     el['column 5'] = wDup.data.records[ind]['column 5'] - wDup.data.records[ind]['column 2'];
 });
-```javascript
+```
 
 ## Вывод объекта в консоль
 
