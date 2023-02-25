@@ -1,3 +1,27 @@
+// форматируем шапку
+// $('#table-' + w.general.renderTo + ' > thead > tr.tablesorter-headerRow').css({ 
+
+// верхний ряд шапки
+$('#table-a1ff7434ad284c39a678f2634b457ce9 > thead > tr.tablesorter-ignoreRow >th').css({ 
+    'color' : 'red',
+    'background-color' : 'white',
+    'text-align' : 'left'
+});
+
+$('#table-a1ff7434ad284c39a678f2634b457ce9 > thead > tr.tablesorter-headerRow >th').css({ 
+    'color' : 'blue',
+    'background-color' : 'gold',
+    'text-align' : 'left'
+});
+
+// текст в нижней строке заголовка таблицы
+$('#table-a1ff7434ad284c39a678f2634b457ce9 > thead > tr.tablesorter-headerRow >th > div span').css({ 
+    'text-align' : 'left',
+    'word-break' : 'normal',
+});
+
+----------
+
 // console.log('w: ', w);
 
 w.data.colNames.forEach(el => el = el.reverse());
