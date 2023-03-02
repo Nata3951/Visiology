@@ -1,0 +1,16 @@
+ImageRender({
+    image: w.general
+});
+
+$('#' + w.general.renderTo).hover(
+    function mouseenter() {
+        $('#' + w.general.renderTo).children().css('background', 'url("https://rosseti.polyanalitika.ru/corelogic/api/query/image?fileGuid=4acc84b4fb894287838c97e143827c39&access_token=NoAuth&showNav=true") center center / contain no-repeat')
+    },
+    function mouseleave() {
+        $('#' + w.general.renderTo).children().css('background', 'url("https://rosseti.polyanalitika.ru/corelogic/api/query/image?fileGuid=4569d6f8b6ba4210ae4fad8c37375dd0&access_token=NoAuth") center center / contain no-repeat')
+    }
+)
+
+$('#' + w.general.renderTo).click(function() {
+    window.top.location.href  = "http://10.197.64.51/viewer?dashboardGuid=0b9bedc42516433f832e97f568def2df&sheetGuid=091d585351444ed2bacbcc974999e97f&showNav=true&fit=true"
+})
