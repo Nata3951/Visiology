@@ -139,6 +139,16 @@ if (filterValue == '2022') {
     $('#widget-header-' + w.general.renderTo + ' > a')[0].innerHTML = 'Попали в ТОП-100   <span style="color:green; font-weight:bold; font-size:120%; vertical-align:middle;">' + records.length + '</span>';
 
 }
+
+//// вертикальное позиционирование 
+$("#widget-header-" + w.general.renderTo + "> a").css({
+    'height':'50%',
+    'position':'absolute',
+    'bottom':'2',
+});
+
+
+
 ```
 
 
