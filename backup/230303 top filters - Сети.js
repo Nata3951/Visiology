@@ -126,3 +126,35 @@ $("#" + "table-" + w.general.renderTo).find("th").css({
     "position": "sticky",
     "top": "-1px",
 });
+
+
+//
+
+w.data.columns[0].captions[0] = "Филиал|РЭС";
+
+TableRender({
+    table: w.general,
+    style: w.style,
+    columns: w.data.columns,
+    records: w.data.records,
+    editMask: w.data.editMask,
+    rowNames: w.data.rowNames,
+    colNames: w.data.colNames,
+    showToolbar: false
+});
+
+$("#" + "table-" + w.general.renderTo).find("th:nth-child(2)").css( "width", "50px");
+
+$("#widget-header-" + w.general.renderTo + "> a").css({
+    'height':'50%',
+    'position':'absolute',
+    'bottom':'2',
+});
+
+
+$('td').css({"padding": "2px"});
+
+$('#table-' + w.general.renderTo + ' tbody > tr > td:last-child').css({
+    'text-align' : 'right',
+    'padding-right' : '5px',
+});
