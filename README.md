@@ -126,6 +126,22 @@ thHeader.innerHTML = `<span>По ${colSparkLineName}</br> <span style="color:#1c
 thHeader.style.font = 'bold 12px sans-serif ';
 ```
 
+### стиль шрифта заголовка ВИДЖЕТА
+```javascript
+let filterValue = visApi().getSelectedValues("3fea8f5b80f342ffb5cc3ea53baed849")[0][0].split('-')[0],
+    records; 
+    
+if (filterValue == '2022') {
+    records = w.data.records.filter(el => el['column 0'] <= 113);
+    $('#widget-header-' + w.general.renderTo + ' > a')[0].innerHTML = 'Попали в ТОП-113   <span style="color:green; font-weight:bold; font-size:120%; vertical-align:middle;">' + records.length + '</span>';
+} else {
+    records = w.data.records.filter(el => el['column 0'] <= 100);
+    $('#widget-header-' + w.general.renderTo + ' > a')[0].innerHTML = 'Попали в ТОП-100   <span style="color:green; font-weight:bold; font-size:120%; vertical-align:middle;">' + records.length + '</span>';
+
+}
+```
+
+
 ### раскрасить ячейки
 ```javascript
 <div style="color: ${data[2][el] < 0 ? '#93a4ad' : '#49aff8'}" class="table-body-element table-body-element-value">${data[2][el] < 0 ? data[2][el] : `+${data[2][el]}`}</div>
