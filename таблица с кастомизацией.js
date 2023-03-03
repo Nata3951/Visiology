@@ -237,3 +237,28 @@ function numberWithSpaces(x) {
         });
     }); 
 }); 
+
+
+    //
+    function chooseColor(v) {
+    if (v < 0) {
+        return '#ff595a';
+    } else {
+        if (v == 0) {
+            return '#49aff8';
+        } else {
+            return '#56ad83';
+        }
+    }
+}
+
+// раскрашиваем ячейки и добавляем плюсы к значениям больше ноля
+[5,6,7].forEach(function(j) {
+    $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
+        td.innerText = td.innerText > 0 ? "+"+td.innerText : td.innerText;
+        $(td).css({
+            'color': 
+                chooseColor(td.innerText)
+        });
+    }); 
+});
