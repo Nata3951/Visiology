@@ -5,6 +5,5 @@ $('#widget-' + w.general.renderTo).css({
 // align text at bottom
 $('#widget-' + w.general.renderTo + ' > div.va-widget-body-container > div').css({
     'position' : 'absolute',
-    'height' : 'auto',
     'bottom' : 0,
 });
