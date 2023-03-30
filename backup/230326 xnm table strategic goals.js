@@ -3,7 +3,7 @@ const comparisonPeriodGuid = '68a5ea4f1101442eb0b7f5a38034ebdc';
 
 let period1 = "2019 год";
 let period2 = "2020 год"; // заменить на фильтр
-let period3 = "2021 год"; // заменить на фильтр 
+let period3 = "6 мес 2021"; // заменить на фильтр 
 let period4 = "2022 год";
 
 let periods = [period1, period2, period3, period4];
@@ -33,7 +33,7 @@ wDup.data.records.forEach((el, ind) => {
     }
     // создаем нужные
     for (let i = 0; i < colsToKeepCount; i++) {
-        el['column ' + i] = w.data.records[ind]['column '+ i];
+        el['column ' + i] = w.data.records[ind]['column '+ colsToKeep[i]];
     }
 });
 
@@ -56,5 +56,7 @@ TableRender({
     showToolbar: false
 });
 
+console.log('test wDup => ', wDup);
+console.log('test w => ', w);
 
 
