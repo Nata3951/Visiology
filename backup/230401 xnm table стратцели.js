@@ -12,7 +12,7 @@ let wDup = JSON.parse(JSON.stringify(w));
 
 //ИНДЕКСЫ НУЖНЫХ КОЛОНОК
 
-let colNames = w.data.colNames;
+let colNames = JSON.parse(JSON.stringify(w.data.colNames));
 
 // заменим первый элемент массива colNames индексом колонки
 colNames.forEach((el, index) => el[0] = index);
@@ -32,7 +32,7 @@ console.log('test colNames => ', colNames);
 
 // сохраним индексы колонок для нужных периодов
 let colsToKeep = colNames.map(el => el[0]);
-// console.log('test colsToKeep => ', colsToKeep);
+console.log('test colsToKeep => ', colsToKeep);
 
 // RECORDS 
 
@@ -43,16 +43,22 @@ wDup.data.records.forEach((el, ind) => {
     for (let i = 0; i < (totalColumnsCount); i++) {
         if (i >= colsToKeepCount) {
             delete el['column ' + i]; // убираем лишние колонки
-        } else { el['column ' + i] = w.data.records[ind]['column '+ colsToKeep[i]];} // формируем нужные
+        } else { 
+            el['column ' + i] = wDup.data.records[ind]['column '+ colsToKeep[i]]; // формируем нужные
+        } 
     }
 });
 
 
 // COLUMNS
-// оставляем только нужные названия колонок; 
-// первые две колонки - измерения, дальше соответственно уменьшаем индекс на два
+// оставляем нужное количество колонок; 
+wDup.data.columns = wDup.data.columns.slice(0, colsToKeepCount+2);
 
-wDup.data.columns = w.data.columns.filter((el, index) => index < 2 || colsToKeep.includes(index-2));
+// первые две колонки - измерения, дальше соответственно уменьшаем индекс на два
+wDup.data.columns.forEach((el, ind) => {
+    el.captions = el.captions.slice(1,3); // уберем лишний уровень
+    if (ind > 1) {el.captions = colNames[ind-2].slice(1,3);} // заменим названия колонок на сохраненные рантше
+});
 
 
 TableRender({
@@ -67,6 +73,4 @@ TableRender({
 });
 
 console.log('test wDup => ', wDup);
-
-
-
+console.log('test cols slice => ', colNames[0].slice(1,3));
