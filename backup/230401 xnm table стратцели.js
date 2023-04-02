@@ -1,10 +1,10 @@
-const basePeriodGuid = 'be35959358a045099e617a1d5a5edfc5';
-const comparisonPeriodGuid = '68a5ea4f1101442eb0b7f5a38034ebdc';
+const basePeriodGuid = '8709444761824a3b90cde9a8ae095b94';  
+const comparisonPeriodGuid = '6b94f7a29344485b9bc6b49fe133786a'; 
 
 let period1 = "2019 год";
-let period2 = "2020 год"; // заменить на фильтр
-let period3 = "2021 год"; // заменить на фильтр 
-let period4 = "2022 год";
+let period2 = visApi().getSelectedValues(comparisonPeriodGuid)[0][0];
+let period3 = visApi().getSelectedValues(basePeriodGuid)[0][0];
+let period4 = "6 мес 2022";
 
 let periods = [period1, period2, period3, period4];
 
@@ -28,11 +28,11 @@ colNames.sort(function (a , b) {
     return result;
 });
 
-console.log('test colNames => ', colNames);
+// console.log('test colNames => ', colNames);
 
 // сохраним индексы колонок для нужных периодов
 let colsToKeep = colNames.map(el => el[0]);
-console.log('test colsToKeep => ', colsToKeep);
+// console.log('test colsToKeep => ', colsToKeep);
 
 // RECORDS 
 
@@ -72,5 +72,5 @@ TableRender({
     showToolbar: false
 });
 
-console.log('test wDup => ', wDup);
-console.log('test cols slice => ', colNames[0].slice(1,3));
+// console.log('test wDup => ', wDup);
+// console.log('test cols slice => ', colNames[0].slice(1,3));
