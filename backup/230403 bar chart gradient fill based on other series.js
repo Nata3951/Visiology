@@ -1,6 +1,7 @@
 w.plotOptions.series.borderColor = 'transparent';
 w.plotOptions.series.fillOpacity = 0.3;
-w.yAxis.gridLineColor = '#E8EAF6';
+w.yAxis.gridLineColor = '#999999';
+w.xAxis.lineColor = '#999999';
 
 let seriesIndexes = w.series.map((el, ind) => [el.id, ind]);
 console.log("test seriesIndexes ", seriesIndexes);
