@@ -1,3 +1,5 @@
+// виджет забирает периоды с двух фильтров - имитирует логику AND
+
 const firstPeriodFilter = '118ede0f786a4a20970d6d290e7fb273'; 
 const secondPeriodFilter = '5c6029c2ffc4445d93026681293ba36b';
 
