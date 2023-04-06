@@ -1,18 +1,4 @@
-// new
-$('#widget-' + w.general.renderTo).css({
-    'border-right': "2px solid #494b6f",
-    'display': 'flex',
-    'align-items': 'end',
-    'justify-content': 'start',
-});
-
-
-$('#widget-' + w.general.renderTo + ' > div.va-widget-body-container > div').css({
-});
-
-
-
-// old
+// old NB line height should be 1,4
 
 $('#widget-' + w.general.renderTo).css({
     'border-right': "2px solid #494b6f",
@@ -30,3 +16,14 @@ TextRender({
     style: w.style
 });
 
+// new, flex, doesn't work ¯\_(ツ)_/¯
+$('#widget-' + w.general.renderTo).css({
+    'border-right': "2px solid #494b6f",
+    'display': 'flex',
+    'align-items': 'end',
+    'justify-content': 'start',
+});
+
+
+$('#widget-' + w.general.renderTo + ' > div.va-widget-body-container > div').css({
+});
