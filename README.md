@@ -209,6 +209,18 @@ Math.round(@value/1000000).toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, '
 @value < 0 ? (@value * 100).toFixed() +'%' :  '<div style = "color:green">' + (@value * 100).toFixed()+'%</div>'
 
 ```
+#### граница виджета
+```
+<style>
+.vl {
+  border-left: 2px solid grey;
+  height: 100%;
+}
+</style>
+<div class="vl"; style="padding-left:5px">
+Согласование условий, млн руб.
+```
+
 
 #### JS code
 
