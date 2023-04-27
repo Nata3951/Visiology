@@ -251,6 +251,35 @@ function numberWithSpaces(x) {
         }
     }
 }
+ 
+    $('#widget-' + w.general.renderTo + ' div.va-widget-header-container').css({
+    'padding-left': '30px'  //отступ слева в титуле виджета
+}); 
+
+
+
+$('#table-' + w.general.renderTo).css({
+    'width': '350', 'vertical-align':'top', 'margin': '0 20px' // ширина таблицы и её отступ от края виджета (могут быть 4 разных отступа со всех сторон)
+});
+
+
+$('#table-' + w.general.renderTo + ' thead > tr > th:nth-child(1)').css({
+    'width': '90px', 'vertical-align':'top', 'text-align':'left' //ширина первой колонки
+});
+
+$('#table-' + w.general.renderTo + ' tbody > tr > td:nth-child(1n+2)').css({
+    'vertical-align':'top', 'text-align':'right' //свойства к колонок с цифрами
+});
+
+
+$('#table-' + w.general.renderTo + ' tr:nth-child(even) td').css({
+    'background-color': '#ffffff', 'border':'1px solid #eeeeee' //четные строки для чресполосицы
+});
+
+$('#table-' + w.general.renderTo + ' tr:nth-child(odd) td').css({
+    'background-color': '#f5f5f5', 'border':'1px solid #eeeeee' //нечетные строки для чресполосицы
+});
+    
 
 // раскрашиваем ячейки и добавляем плюсы к значениям больше ноля
 [5,6,7].forEach(function(j) {
