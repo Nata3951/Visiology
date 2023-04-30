@@ -19,10 +19,17 @@ $("#table-"+w.general.renderTo+" > thead > tr:nth-child(2) > th:nth-child(1), #t
 $("#table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(1), #table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(2), #table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(3), #table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(8)").attr('rowspan', '2');
 
 // Добавляем/заменяем заголовки
-$("#table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(1) > div > span:nth-child(1)").text('Показатель');
+$("#table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(1) > div > span:nth-child(1)").text(
+    'Показатель'
+    ).css({
+    "text-align":"left",
+    "padding-left":"10px",
+});
 $("#table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(2) > div > span:nth-child(1)").text('Ед. изм.');
 $("#table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(3) > div > span:nth-child(1)").text('Факт 2017'); 
-$("#table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(8) > div > span:nth-child(1)").text('Бизнес план 2030');
+$(
+    "#table-"+w.general.renderTo+" > thead > tr:nth-child(1) > th:nth-child(8) > div > span:nth-child(1)"
+  ).text('Бизнес план 2030').css({'word-break' :'normal'});
 
 // добавляем высоту строк
 $('#table-' + w.general.renderTo + ' tbody > tr > td').css({
@@ -34,13 +41,19 @@ $('#table-' + w.general.renderTo + ' tbody > tr > td').css({
 // ширина колонок
 $('#table-' + w.general.renderTo + ' th:nth-child(1)')
 .css({
-    "width":"240px"
+    "width":"240px",
+    
 });
 
 $('#table-' + w.general.renderTo + ' th:nth-child(2)')
 .css({
-    "width":"110px"
+    "width":"110px",
 });
+
+// цвет текста второй колонки
+ $('#table-' + w.general.renderTo + ' tr > td:nth-child(2)').css({
+        'color':'#9e9e9e',
+        });
 
 // раскраска ячеек факта по сравнию с планом
 // номер колонки с фактом = [4,6]
@@ -58,10 +71,10 @@ function chooseColor(v) {
 
 function colorFactColumn(measureRow, direction) {
     factColumns.forEach(function(j) {
-        $(`#table-681806a576554d5cb4c51970abc268a3 > tbody > tr:nth-child(${measureRow}) > td:nth-child(${j})`).each(
+        $(`#table-${w.general.renderTo} > tbody > tr:nth-child(${measureRow}) > td:nth-child(${j})`).each(
             function(i, td) {
-                let fact = $(`#table-681806a576554d5cb4c51970abc268a3 > tbody > tr:nth-child(${measureRow}) > td:nth-child(${j})`)[0].innerText;
-                let plan = $(`#table-681806a576554d5cb4c51970abc268a3 > tbody > tr:nth-child(${measureRow}) > td:nth-child(${j+1})`)[0].innerText;
+                let fact = $(`#table-${w.general.renderTo} > tbody > tr:nth-child(${measureRow}) > td:nth-child(${j})`)[0].innerText;
+                let plan = $(`#table-${w.general.renderTo} > tbody > tr:nth-child(${measureRow}) > td:nth-child(${j+1})`)[0].innerText;
                 let diff = (plan-fact)*direction;
                 
                 $(td).css({
@@ -100,15 +113,25 @@ function numberWithSpaces(x) {
 
 // для цифровых колонок добавим разделители разрядов, две цифры после запятой, отбивку справа
 [3,4,5,6,7,8].forEach(function(j) {
-    $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
+    $(`#table-${w.general.renderTo} tr > td:nth-child(${j})`).each(function(i, td) {
         var value = +td.innerHTML;
         td.innerText = numberWithSpaces(td.innerText); 
         $(td).css({
             'text-align': 'right',
             'padding-right':'15px',
+            'font-weight':'bold',
         });
-}); 
- 
+    });        
+});
+    
+// для строки с % добавляем знак процента к числу
+
+let percentRow = 2;
+
+[3,4,5,6,7,8].forEach(function(j) {
+    $(`#table-${w.general.renderTo} tr:nth-child(${percentRow}) > td:nth-child(${j})`).each(function(i, td) {
+        td.innerText = td.innerText+'%'; 
+        }); 
 });
 
 
