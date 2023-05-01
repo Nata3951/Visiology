@@ -1,8 +1,5 @@
 
 // ---------------------------------------------
-
-window.render1 = function (dynamics) {
-    console.log("10 лучших", w)
     w.data.columns[0].captions[0] = "Филиал|Подразделение";
     w.data.columns[1].captions[0] = "Дин";
     w.data.colNames[0] = "Дин";
@@ -34,26 +31,10 @@ w.data.rowNames.sort(function(a, b) {
 w.data.records.sort(function(a, b) {
     return Number(Number(a.rowNames[0]) > Number(b.rowNames[0])) ? 1: -1;
 });
-TableRender({
-    table: w.general,
-    style: w.style,
-    columns: w.data.columns,
-    records: w.data.records,
-    editMask: w.data.editMask,
-    rowNames: w.data.rowNames,
-    colNames: w.data.colNames,
-    showToolbar: false
-});
 
 // hardcoding column names, alignment
 $('#table-' + w.general.renderTo + ' th:nth-child(1)')
 .text('КПЭ')
-.css({
-    "text-align": "center"
-});
-
-$('#table-' + w.general.renderTo + ' th:nth-child(2)')
-.text('Наименование показателя')
 .css({
     "text-align": "center"
 });
@@ -78,10 +59,6 @@ $('#table-' + w.general.renderTo + ' td')
 $('#table-' + w.general.renderTo + ' th:nth-child(1)')
 .css({
     "width":"100px"
-});
-$('#table-' + w.general.renderTo + ' th:nth-child(2)')
-.css({
-    "width":"500px"
 });
 
 // добавляем высоту строк
