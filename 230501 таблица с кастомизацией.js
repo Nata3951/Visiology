@@ -230,8 +230,8 @@ function numberWithSpaces(x) {
 }
  
 //отступ слева в заголовке виджета
-    $('#widget-' + w.general.renderTo + ' div.va-widget-header-container').css({
-    'padding-left': '30px'  
+    $(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
+    'padding-left': '10px'  
 }); 
 
 
