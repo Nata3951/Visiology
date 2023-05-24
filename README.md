@@ -1,5 +1,13 @@
 # Visiology vidget modifications
 
+
+## отступ слева в заголовке виджета
+```javascript
+$(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
+    'padding-left': '10px'  
+}); 
+```
+
 ### замена текста в series.name
 ```javascript
 wDup.series.forEach(series => series.name = series.name.replace("Количество РЭС - ",""));
