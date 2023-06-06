@@ -155,10 +155,12 @@ $("#widget-header-" + w.general.renderTo + "> a").css({
     'bottom':'2',
 });
 
-
-
+ ```
+### скругление углов таблицы
+```javascript
+// Задаем скругление углов для таблицы
+$('#grid-' + w.general.renderTo).css({'border-radius': '8px'})
 ```
-
 
 ### раскрасить ячейки
 ```javascript
