@@ -1,5 +1,9 @@
 # Visiology vidget modifications
 
+### text outline
+w.plotOptions.series.dataLabels.style.textOutline = 'white';
+w.plotOptions.series.dataLabels.style.textOutline = false;
+
 
 ## отступ слева в заголовке виджета
 ```javascript
