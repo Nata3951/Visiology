@@ -92,12 +92,6 @@ w.data.records.forEach((el, ind) => {
 });
 ```
 
-## Вывод объекта в консоль
-
-```javascript
-console.log("output name", w) \\ можно отфильтровать вывод
-```
-
 ## Обращение к данным другого виджета
 
 ```javascript
