@@ -2,7 +2,7 @@
 w.yAxis.OnTick = false;
 w.yAxis.endOnTick = false;
 
-// сделать легенду некативной
+// сделать легенду неактивной
 $('#' + w.general.renderTo).find('.highcharts-legend').css({ 
     'pointer-events': 'none',
    });
