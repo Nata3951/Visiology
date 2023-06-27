@@ -1,0 +1,285 @@
+// Задаем градиент для значений не достигших плана
+const gradientPurpleRed = {
+    "linearGradient": {
+        "x1": 0, 
+        "y1": 1,
+        "x2": 0,
+        "y2": 0
+    },
+    "stops": [
+        [0, "#ff595a"],
+        [1, "#ff595a"]
+    ]
+};
+
+// Задаем градиент для значений достигших плана
+const gradientPurpleGreen = {
+    "linearGradient": {
+        "x1": 0,
+        "y1": 1,
+        "x2": 0,
+        "y2": 0
+    },
+    "stops": [
+        [0,"rgba(82,188,166,1)"],
+        [1,"rgba(82,188,166,1)"]
+    ]
+};
+
+// Задаем массив цветов для серий 
+// let arrColors = [(w.props.direction?gradientPurpleGreen:gradientPurpleRed), "#e9a356"];
+let arrColors = [(w.props.direction?"rgba(82,188,166,1)":"#ff595a"), "#e9a356"];
+
+// Задаем массив типов для серий
+let arrTypes = ["column", "spline"];
+
+// Если данные не привязаны, то устанавливаем тестовые 
+if (!w.data.values.length) {
+    w.data.cols = [["Факт"],["План"]];
+    w.data.rows = [["2021"],["2022"],["2023"],["2024"]];
+    w.data.values = [
+        [43.2, 45, 46.5, 58.3],
+        [45, 45, 50, 55]
+    ];
+}
+
+
+
+let comparisonData = [
+    w.data.values[2],
+    w.data.values[3]
+].map((el, ind) => {
+    return el = el.filter(el => el !== null)
+});
+
+let mainData = [
+    w.data.values[0],
+    w.data.values[1]
+].map((el, ind) => {
+    return el = el.filter(el => el !== null)
+})
+
+console.log(w.data.rows)
+let rows = w.data.rows.filter((el, ind) => w.data.values[0][ind] !== null)
+
+// console.log(w, comparisonData, mainData, rows)
+
+// Трансформируем данные
+let series = ['Факт', 'Бизнес-план'].map((col,ind) => {
+    // Создаем серию
+    let serie = {
+        "id": col, 
+        "name": col, 
+        "color": arrColors[ind], 
+        "type": arrTypes[ind],
+        "marker": {
+            "radius": 0.1,
+            "states": {
+                "select": {
+                    "radius": 5
+                },
+                "hover": {
+                    "radius": 5
+                }
+            }
+        },
+        // Формируем данные для серии
+        data: rows.map((period, i) => {
+            return {
+                "y": mainData[ind][i],
+                name: period[0],
+                names: period
+            }
+        })
+    }
+    return serie
+})
+
+// Перекрашиваем столбцы факта, если они не достигли плана
+series[0].data.forEach((el, ind) => {
+    if (el.y < series[1].data[ind].y) {el.color = (w.props.direction?gradientPurpleRed:gradientPurpleGreen)}
+}); 
+
+
+// // Создаем категории для оси X
+// let categories = w.data.rows;
+
+// Создаем функцию форматирования тултипа
+let tooltipFormatter = function(){
+    var t="<span>"+this.series.name+" "+this.point.name+"</span>: <span>"+this.point.y+"</span>";
+    return t
+}
+
+if (w.props.filterGranularity) { 
+	const periodGranularity = visApi().getSelectedValues(w.props.filterGranularity);
+	
+    // Проверка на пустоту	
+	if (periodGranularity[0]) {
+        if (periodGranularity[0][0] == "Год") {
+            // Меняем категории для оси X
+        	rows = rows.map(el => el[0].split(" ")[2]);
+        	
+            // Меняем функцию тултипа	
+        	tooltipFormatter = function(){
+                var t="<span>"+this.series.name+" "+this.x+"</span>: "+(this.point.y.toFixed(w.props.tooltipRoundTo)).replace(/\B(?=(\d{3})+(?!\d))/g, " ")+
+                "<br><span>В сравнении с 2020</span>: "+(this.point.y / (this.series.name == "Факт"?comparisonData[0]:comparisonData[1]) * 100).toFixed(1)+"%";
+                return t
+            }
+        } else {
+            // Меняем категории для оси X
+        	rows = rows.map(el => el[0])
+        	
+            // Меняем функцию тултипа	
+        	tooltipFormatter = function(){
+                var t="<span>"+this.series.name+" "+this.point.name+"</span>: "+(this.point.y.toFixed(w.props.tooltipRoundTo)).replace(/\B(?=(\d{3})+(?!\d))/g, " ")+
+                "<br><span>В сравнении с 2020</span>: "+(this.point.y / (this.series.name == "Факт"?comparisonData[0]:comparisonData[1]) * 100).toFixed(1)+"%";
+                return t
+            }
+        }
+	}
+}
+
+console.log(rows)
+
+// Рендерим диаграмму
+Highcharts.chart({
+    series: series,
+    chart: {
+            "renderTo": w.general.renderTo,
+            "type": "line",
+            "alignTicks": false
+        },
+    plotOptions: {
+        "series": {
+            "dataLabels": {
+                "enabled": false,
+                "style": {
+                    "align": "center",
+                    "color": "rgba(250,250,250,1)",
+                    "fontFamily": "Open Sans",
+                    "fontSize": "15px",
+                    "fontWeight": "normal",
+                    "fontStyle": "normal"
+                },
+                "allowOverlap": true
+            },
+            "cropThreshold": 100000,
+            "states": {
+                "inactive": {
+                    "opacity": 1
+                }
+            },
+            "lineWidth": 3,
+            "animation": false,
+            "borderColor": "transparent",
+            "fillOpacity": 0.3
+        }
+    },
+    legend: {
+        "enabled": w.props.legend,
+        "align": "center",
+        "verticalAlign": "bottom",
+        "layout": "horizontal",
+        "itemStyle": {
+            "align": "center",
+            "color": "rgba(158,158,158,1)",
+            "fontFamily": "Open Sans",
+            "fontSize": "12px",
+            "fontWeight": "normal",
+            "fontStyle": "normal"
+        }, 
+        "useHTML": true,
+        "labelFormatter": function() {
+            if (this.name === 'Факт') {
+                return '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="6" fill="#FF8A80"/><path d="M6 0C5.21207 -9.39599e-09 4.43185 0.155195 3.7039 0.456723C2.97595 0.758251 2.31451 1.20021 1.75736 1.75736C1.20021 2.31451 0.758251 2.97595 0.456723 3.7039C0.155195 4.43185 -2.50456e-08 5.21207 0 6C2.50456e-08 6.78793 0.155195 7.56815 0.456723 8.2961C0.758251 9.02405 1.20021 9.68549 1.75736 10.2426C2.31451 10.7998 2.97595 11.2417 3.7039 11.5433C4.43185 11.8448 5.21207 12 6 12L6 6L6 0Z" fill="#4CAF50"/></svg><span style="margin-left: 5px;">' + this.name + '</span>';
+            } else {
+                return '<span>' + this.name + '</span>';
+            }
+        },
+        "itemMarginTop": 1.5
+    },
+    tooltip: {
+        "formatter": tooltipFormatter, 
+        "style": {
+            "fontFamily": "Arial",
+            "fontSize": "14px"
+        }
+    },
+    yAxis: {
+        "lineWidth": 0,
+        "title": {
+            "text": "",
+            "style": {
+                "align": "center",
+                "color": "rgba(0,0,0,1)",
+                "fontFamily": "Arial",
+                "fontSize": "14px",
+                "fontWeight": "normal",
+                "fontStyle": "normal"
+            }
+        },
+        "labels": {
+            "formatter": function () {
+    		    var value = this.value;
+    		    if (value >= 1000000) {
+    		        return value / 1000000 + 'м';
+    		    } else if (value >= 1000) {
+    		        return value / 1000 + 'т';
+    		    }
+    		    return value;
+    		},
+            "enabled": true,
+            "style": {
+                "align": "center",
+                "color": "rgba(158,158,158,1)",
+                "fontFamily": "Open Sans",
+                "fontSize": "12px",
+                "fontWeight": "normal",
+                "fontStyle": "normal"
+            }
+        },
+        "allowDecimals": true,
+        "tickLength": 0,
+        "gridLineWidth": 1.5,
+        "gridLineColor": '#292b4c',
+        "minorGridLineWidth": 0.5,
+        "minorTickInterval": 'auto',
+        "minorGridLineColor": '#494b6f',
+        "plotLines": [],
+        "plotBands": []
+    },
+    xAxis: {
+        "lineWidth": 1,
+        "title": {
+            "text": "",
+            "style": {
+                "align": "center",
+                "color": "rgba(0,0,0,1)",
+                "fontFamily": "Arial",
+                "fontSize": "14px",
+                "fontWeight": "normal",
+                "fontStyle": "normal"
+            }
+        },
+        "labels": {
+            "enabled": true,
+            "style": {
+                "align": "center",
+                "color": "rgba(158,158,158,1)",
+                "fontFamily": "Open Sans",
+                "fontSize": "12px",
+                "fontWeight": "normal",
+                "fontStyle": "normal"
+            }
+        },
+        "gridLineWidth": 0,
+        "opposite": false,
+        "type": "category",
+        "plotLines": [],
+        "plotBands": [],
+        "categories": rows,
+        "lineColor": "#494b6f"
+    },
+});
+
+$("#"+w.general.renderTo+" > div > svg > g.highcharts-legend > g > g > g.highcharts-legend-item.highcharts-series-0").remove()
