@@ -30,3 +30,16 @@ $("#"+w.general.renderTo).css({
    padding: '10px 10px',
    borderLeft: '1px solid #cccccc'
 });
+
+// форматирование подписей оси
+w.xAxis.labels.formatter = function() {
+    return this.value.substring(0,4);
+};
+
+w.xAxis.labels.formatter = function() {
+    return this.value.replace('-', '</br>');
+};
+
+w.xAxis.labels.formatter = function() {
+    return this.value.substring(0,4) + '</br>' + this.value.split('-')[1];
+};
