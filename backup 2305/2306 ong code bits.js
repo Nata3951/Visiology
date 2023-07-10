@@ -24,3 +24,9 @@ w.series.pop();
 
 // зададим цвет отрицательных значений
 w.series[0].negativeColor = '#ff1744';
+
+// text box padding + border
+$("#"+w.general.renderTo).css({
+   padding: '10px 10px',
+   borderLeft: '1px solid #cccccc'
+});
