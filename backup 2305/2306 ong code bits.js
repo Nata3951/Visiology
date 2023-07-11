@@ -38,8 +38,12 @@ w.plotOptions.series.dataLabels.formatter = function() {
     return this.y + '%';
 };
 
-
 w.plotOptions.series.dataLabels.formatter = function() {
     console.log('test this', this);
     return this.y + '%';
 };
+
+// подписи столбцов переместим в основание столбцов
+w.series[1].data.forEach( el => {
+    el.dataLabels = {x: 0, y: 100};
+});
