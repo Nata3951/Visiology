@@ -44,6 +44,10 @@ w.plotOptions.series.dataLabels.formatter = function() {
 };
 
 // подписи столбцов переместим в основание столбцов
-w.series[1].data.forEach( el => {
-    el.dataLabels = {x: 0, y: 0};
+// подписи столбцов переместим в основание столбцов
+w.series[1].data.forEach( el => el.dataLabels = {
+    y: 100,
+    // inside: true,
+    style : {textOutline: false},
 });
+
