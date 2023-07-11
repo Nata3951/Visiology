@@ -43,3 +43,17 @@ w.xAxis.labels.formatter = function() {
 w.xAxis.labels.formatter = function() {
     return this.value.substring(0,4) + '</br>' + this.value.split('-')[1];
 };
+
+// положение подписи точки
+w.plotOptions.series.dataLabels.y = 100;
+
+// using formatter
+w.plotOptions.series.dataLabels.formatter = function() {
+    return this.y + '%';
+};
+
+
+w.plotOptions.series.dataLabels.formatter = function() {
+    console.log('test this', this);
+    return this.y + '%';
+};
