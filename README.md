@@ -285,4 +285,16 @@ w.yAxis.plotBands = {color: "red", from:0.9, to: 1.1};
 ```javascript
 "<b>" + @total + "</b>"
 ```
+# Поменять заглушку "у виджета нет данных"
 
+```javascript
+// Скрипт с содержимым в папку customjs и каждые 200 мс меняет надпись
+setInterval(function() {
+$.each($(".va-widget-error"), function () {
+var text = $(this).find("div").text();
+if (text == "У виджета нет данных") {
+$(this).find("div").text("Другой текст");
+}
+});
+}, 200);
+```
