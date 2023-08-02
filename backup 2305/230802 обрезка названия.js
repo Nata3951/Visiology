@@ -13,3 +13,10 @@ w.general.text = `<span style="color:#212121;font-weight:bold;padding-left:0px">
     text: w.general,
     style: w.style,
   });
+
+ sns.scatterplot(
+        x=df['pdz_forecast'], y=df['pdz_now'], hue=df['rating'], palette = 'bwr_r', 
+     s = 300, alpha = 0.5,
+     legend=False,     
+    )
+plt.show()
