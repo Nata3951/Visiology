@@ -9,6 +9,13 @@ TableRender({
     showToolbar: false
 });
 
+// фиксируем шапку
+$('#table-' + w.general.renderTo).css({'border-collapse':'collapse'});
+document.getElementById("grid-"+ w.general.renderTo).addEventListener("scroll", function(){
+   var translate = "translate(0,"+this.scrollTop+"px)";
+   this.querySelector("thead").style.transform = translate;
+});
+
 // Добавляем/заменяем заголовки
 let header = {1:'Уровень проблем-ти', 2:'Клиент', 3:'Предмет лизинга'};
 
@@ -18,16 +25,28 @@ for (let key in header) {
 }
 
 // ширина колонок
-let width = {1:'10%', 2:'12%', 3:'15%', 10:'22%'};
+let width = {1:'11%', 2:'12%', 3:'15%', 10:'23%'};
 
 for (let key in width) {
     $(`#table-${w.general.renderTo} th:nth-child(${key})`)
-    .css({"width": width[key],});
+    .css({"width": width[key],
+    });
 }
+
+// форматируем текст шапки 
+$('#table-'+w.general.renderTo+' > thead  div span').css({ 
+    'text-align' : 'left',
+    'word-break' : 'normal',
+    'font-weight' : 'normal',
+});
+
+$('#table-'+w.general.renderTo+' th').css({ 
+    'padding-left' : '3px'
+});
 
 let red = '#ff8a8080';
 let orange = '#ffab4080';
-let yellow = '#ffea0066'; // прозрачность 40%
+let yellow = '#ffea0040'; // прозрачность 30%
 let green = '#aed58180';
 
 // раскрасим первый столбец
@@ -59,26 +78,71 @@ let colors = {'A' : green, 'B': yellow, 'C': orange, 'D': red};
     });
 });
 
+// отформатируем числа
+function numberWithSpaces(x) {
+  var parts = x.toString().split(".");
+  let head = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+//   let tail = parts[1] ? parts[1].slice(0,1) : 0;
+  return head;
+}
+
+[6,7,8,9].forEach(function(j) {
+    $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
+        var value = +td.innerHTML;
+        td.innerText = numberWithSpaces(td.innerText); 
+        $(td).css({
+            'text-align': 'right',
+            'font-weight': 'bold',
+        });
+    }); 
+});
+
 // добавим маркеры динамики рейтинга
 let curr_rating = $(`#table-${w.general.renderTo} tr > td:nth-child(4)`);
 let prev_rating = $(`#table-${w.general.renderTo} tr > td:nth-child(5)`);
 
 curr_rating.each(function (i, td) {
-    if (curr_rating[i].innerText >  prev_rating[i].innerText) {
-       td.innerHTML += '<span style="color: crimson"> ▼</span>';
-    }
+    if (curr_rating[i].innerText >  prev_rating[i].innerText) {td.innerHTML += '<span style="color: #ff1744">▼</span>';}
+    if (curr_rating[i].innerText <  prev_rating[i].innerText) {td.innerHTML += '<span style="color: #4caf50">▲</span>';}
 });
 
-// добавим маркеры динамики ПДЗ
+// добавим маркеры динамики ПДЗ 
 let curr_pdz = $(`#table-${w.general.renderTo} tr > td:nth-child(6)`);
-let prev_pdz = $(`#table-${w.general.renderTo} tr > td:nth-child(7)`);
+let forecast_pdz = $(`#table-${w.general.renderTo} tr > td:nth-child(7)`);
+let pdz_depth = $(`#table-${w.general.renderTo} tr > td:nth-child(11)`);
 
-curr_pdz.each(function (i, td) {
-    if (+curr_pdz[i].innerText <  +prev_pdz[i].innerText) {
-       td.innerHTML += '<span style="color: crimson"> ▼</span>';
-    }
-    else if (+curr_pdz[i].innerText >  +prev_pdz[i].innerText) {
-       td.innerHTML += '<span style="color: green"> ▲</span>';
-    }
+forecast_pdz.each(function (i, td) {
+    let curr = +curr_pdz[i].innerText.replace(" ","");
+    let forecast = +forecast_pdz[i].innerText.replace(" ","");
 
+    if (curr <  forecast) {
+      td.innerHTML += '<span style="color: #ff1744">▲</span>';
+    }
+    else if (curr > forecast) {
+      td.innerHTML += '<span style="color: #4caf50">▼</span>';
+    }
 });
+
+//добавим глубину ПДЗ
+curr_pdz.each(function (i, td) {
+    let depth = pdz_depth[i].innerText;
+    td.innerHTML += '</br><span style="color: #757575; font-weight: normal">' + depth +'</span>';
+});
+
+forecast_pdz.each(function (i, td) {
+    let curr = +curr_pdz[i].innerText.replace(" ","");
+    let forecast = +forecast_pdz[i].innerText.replace(" ","");
+
+    if (curr <  forecast) {
+      td.innerHTML += '<span style="color: #ff1744">▲</span>';
+    }
+    else if (curr > forecast) {
+      td.innerHTML += '<span style="color: #4caf50">▼</span>';
+    }
+});
+
+
+
+// прячем последний столбец, с глубиной ПДЗ
+$('#table-' + w.general.renderTo + ' th:last-child').css({ 'display': 'none' });
+$('#table-' + w.general.renderTo + ' tbody > tr > td:last-child').css({ 'display': 'none' });
