@@ -1,5 +1,3 @@
-//dashboardGuid=e4b4d7bd7b87467a90861809cf458f3f&sheetGuid=5d4f134680a44cf6b0b007a52b902092
-
 TableRender({
     table: w.general,
     style: w.style,
@@ -29,17 +27,25 @@ for (let key in width) {
 
 let red = '#ff8a8080';
 let orange = '#ffab4080';
-let yellow = '#ffea0080';
+let yellow = '#ffea0066'; // прозрачность 40%
 let green = '#aed58180';
 
 // раскрасим первый столбец
 $('#table-' + w.general.renderTo + ' tr > td:nth-child(1)').each(function(i, td) {
-        if (td.innerText.includes('робле')) {
+        if (td.innerText.slice(0,3) == 'Про') {
             $(td).css({'background-color' : red});
         }
-        else if (td.innerText.includes('контр')) {
+        else if (td.innerText.slice(0,3) == 'Пре') {
+            $(td).css({'background-color' : orange});
+        }
+        else if (td.innerText.slice(0,2) == ('На')) {
             $(td).css({'background-color' : yellow});
         }
+    });
+    
+// добавим переносы строк в столбец 3
+$('#table-' + w.general.renderTo + ' tr > td:nth-child(3)').each(function(i, td) {
+        td.innerHTML = td.innerHTML.replaceAll(";", "</br>")
     });
     
 // раскрасим столбцы с рейтингами
@@ -51,4 +57,28 @@ let colors = {'A' : green, 'B': yellow, 'C': orange, 'D': red};
             'background-color': colors[td.innerText[0]],
         });
     });
+});
+
+// добавим маркеры динамики рейтинга
+let curr_rating = $(`#table-${w.general.renderTo} tr > td:nth-child(4)`);
+let prev_rating = $(`#table-${w.general.renderTo} tr > td:nth-child(5)`);
+
+curr_rating.each(function (i, td) {
+    if (curr_rating[i].innerText >  prev_rating[i].innerText) {
+       td.innerHTML += '<span style="color: crimson"> ▼</span>';
+    }
+});
+
+// добавим маркеры динамики ПДЗ
+let curr_pdz = $(`#table-${w.general.renderTo} tr > td:nth-child(6)`);
+let prev_pdz = $(`#table-${w.general.renderTo} tr > td:nth-child(7)`);
+
+curr_pdz.each(function (i, td) {
+    if (+curr_pdz[i].innerText <  +prev_pdz[i].innerText) {
+       td.innerHTML += '<span style="color: crimson"> ▼</span>';
+    }
+    else if (+curr_pdz[i].innerText >  +prev_pdz[i].innerText) {
+       td.innerHTML += '<span style="color: green"> ▲</span>';
+    }
+
 });
