@@ -4,22 +4,6 @@
 w.plotOptions.series.dataLabels.style.textOutline = 'white';
 w.plotOptions.series.dataLabels.style.textOutline = false;
 
-## Заголовок виджета
-
-### отступ слева в заголовке виджета
-```javascript
-$(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
-    'padding-left': '10px'  
-}); 
-```
-
-### Поменять текст
-```javascript
-    $('#widget-header-' + w.general.renderTo + ' > a')[0].innerHTML = '   Попали в ТОП-113   <span style="color:#4CAF50; font-weight:bold; font-size:120%; vertical-align:bottom;">' + records.length + '</span>';
-} else {
-    console.log(records)
-```
-
 ## замена текста в series.name
 ```javascript
 wDup.series.forEach(series => series.name = series.name.replace("Количество РЭС - ",""));
