@@ -17,18 +17,7 @@ $("#"+w.general.renderTo).css({
    borderLeft: '1px solid #cccccc'
 });
 
-// форматирование подписей оси
-w.xAxis.labels.formatter = function() {
-    return this.value.substring(0,4);
-};
 
-w.xAxis.labels.formatter = function() {
-    return this.value.replace('-', '</br>');
-};
-
-w.xAxis.labels.formatter = function() {
-    return this.value.substring(0,4) + '</br>' + this.value.split('-')[1];
-};
 
 // положение подписи точки
 w.plotOptions.series.dataLabels.y = 100;
