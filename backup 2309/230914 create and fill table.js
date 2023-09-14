@@ -118,3 +118,48 @@ $('#' + w.general.renderTo + ' div:nth-child(n+14):nth-child(-n+16)').each(funct
     $(this).css('background-color', '#FF6666');
   }
 });
+
+// simple
+
+
+let text = 'Клиентов в текущем месяце';
+let textWidth = '140px';
+// let client_dcount = w.data.values[0].filter(el => el > 0).length;
+let client_dcount = w.data.values[0].length;
+
+
+ 
+const container = document.getElementById(w.general.renderTo);
+
+for (let j = 0; j < 2; j++) {
+    const newCell = document.createElement("div");
+    newCell.style.height = container.offsetHeight + "px";
+    newCell.style.boxSizing = "border-box";
+    newCell.style.float = "left";
+    newCell.style.display = "flex";
+    newCell.style.justifyContent = "center";
+    newCell.style.alignItems = "center";
+    container.appendChild(newCell);
+}
+
+$('#' + w.general.renderTo + ' div:nth-child(1)').css({
+    'font-family': 'Open Sans',
+    'padding-right' : '20px',
+    'font-size': '14px',
+    'color': '#757575',
+    'width' : textWidth,
+    'text-align' : 'right'
+
+});
+
+$('#' + w.general.renderTo + ' div:nth-child(2)').css({
+    'font-family': 'Open Sans',
+    'font-size': '30px',
+    'color': 'black',
+    'justify-content' : 'left'
+});
+
+// Вставляем значения в нужные ячейки
+$('#' + w.general.renderTo + ' div:nth-child(1)').html(text);
+$('#' + w.general.renderTo + ' div:nth-child(2)').html(client_dcount);  
+    
