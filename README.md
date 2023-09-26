@@ -185,6 +185,15 @@ typeof @value == 'number' ? @value.toFixed(1).replace(/(?!^)(?=(?:\d{3})+(?:\.|$
 
 ## Текстовый виджет
 
+### выровнять по нижней границе
+```javascript
+// align text at bottom
+$('#widget-' + w.general.renderTo + ' > div.va-widget-body-container > div').css({
+    'position' : 'absolute',
+    'bottom' : 0,
+});
+```
+
 ### обращение к данным текстового виджета
 ```javascript
 w.general.text = w.data.cols[0] + w.data.cols[1]; // названия колонок
