@@ -9,6 +9,7 @@ w.yAxis.labels.enabled = false;
 w.xAxis.labels.enabled = false;
 w.plotOptions.series.borderColor = 'transparent';
 w.tooltip.enabled = false;
+w.plotOptions.series.dataLabels.style.textOutline = false;
 
 
 // Объединяем столбцы
