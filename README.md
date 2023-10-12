@@ -278,16 +278,18 @@ w.yAxis.plotBands = {color: "red", from:0.9, to: 1.1};
 ```javascript
 "<b>" + @total + "</b>"
 ```
-# Поменять заглушку "у виджета нет данных"
 
+## Tooltip formatting
 ```javascript
-// Скрипт с содержимым в папку customjs и каждые 200 мс меняет надпись
-setInterval(function() {
-$.each($(".va-widget-error"), function () {
-var text = $(this).find("div").text();
-if (text == "У виджета нет данных") {
-$(this).find("div").text("Другой текст");
-}
-});
-}, 200);
+w.tooltip.formatter = function () {
+    var s = '<b>' + this.x + '</b>';
+
+    $.each(this.points, function () {
+        var symbol = '●';
+        if (this.series.name != "area")
+        s += '<br/>' + '<span style="color:' + this.series.color + '">' + symbol + '</span>' + ' ' + this.series.name + ': ' + this.y;
+    });
+
+    return s;
+};
 ```
