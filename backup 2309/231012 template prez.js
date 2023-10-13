@@ -68,18 +68,18 @@ $(`#table-${w.general.renderTo} > thead  th`).css({
     'text-align' : 'left',
     "color": text1,
     'word-break' : 'normal',
-    "border-width" : "1px",
-    'border-color' : border_color,
     "background-color" : table_background,
     "padding" : "3px 5px",
 });
 
-// ячейки таблицы: шрифт
+// ячейки таблицы: шрифт, границы
 $(`#table-${w.general.renderTo} td`)
     .css({
         'font' : '18px Open Sans',
         'color' : text1,
-  });
+        'border-color' : border_color,
+        'border-width' : '1px',
+    });
 
 // зебра
 $(`#table-${w.general.renderTo} tbody tr:nth-child(odd)`)
