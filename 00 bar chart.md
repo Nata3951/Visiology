@@ -8,3 +8,14 @@ w.yAxis.stackLabels.formatter = function(){
 w.yAxis.stackLabels.style.fontFamily = 'Open Sans';
 w.yAxis.stackLabels.style.fontSize = '14px';
 ```
+
+### подписи осей
+```javascript
+w.xAxis.labels.style = ({
+    'color' : text1,
+    'fontSize': '18px',
+    'fontFamily' : 'Open Sans',
+    'wordBreak' : 'break-all', 
+    'textOverflow': 'allow'
+});
+```
