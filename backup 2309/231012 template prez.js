@@ -1,5 +1,5 @@
 let background =  '#18324b';
-let row_dark = '#00000030';
+
 
 // светофор
 let red = '#ff5252';
@@ -10,6 +10,12 @@ let green = '#aed581';
 // текст 
 let text1 = '#fafafa';
 let text2 = '#9e9e9e';
+
+// таблица
+let table_background = "#233c53";
+let row_dark = '#00000030';
+let border_color =  '#33465b';
+let border_width = '1px';
 
 // график 
 let azure = "#2196f3";
@@ -57,11 +63,16 @@ $(`#widget-${w.general.renderTo} .va-widget-header`).css({
 });
 
 // ТАБЛИЦА
-// заголовок таблицы
-$('#table-' + w.general.renderTo + ' thead th')
-.css("border","1px solid rgb(200,209,215)")
-.css("color", text1)
-.css("padding","15px 5px");
+// шапка
+$(`#table-${w.general.renderTo} > thead  th`).css({ 
+    'text-align' : 'left',
+    "color": text1,
+    'word-break' : 'normal',
+    "border-width" : "1px",
+    'border-color' : border_color,
+    "background-color" : table_background,
+    "padding" : "3px 5px",
+});
 
 // ячейки таблицы: шрифт
 $(`#table-${w.general.renderTo} td`)
