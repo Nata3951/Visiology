@@ -38,11 +38,7 @@ visApi().onSelectedValuesChangedListener({guid: subscribeN, widgetGuid: filterGu
 });
 ```
 
-## дополнительная ось для серии
 
-```javascript
-w.series[id].yAxis = 1; // до кода виджета
-```
 
 ## Массивы
 
@@ -69,20 +65,7 @@ TextRender({
 });
 ```
 
-### поменять местами столбцы
 
-```javascript
-let wDup = JSON.parse(JSON.stringify(w));
-
-w.data.records.forEach((el, ind) => {
-    el['column 0'] = wDup.data.records[ind]['column 3'];
-    el['column 1'] = wDup.data.records[ind]['column 4'];
-    el['column 2'] = wDup.data.records[ind]['column 5'];
-    el['column 3'] = wDup.data.records[ind]['column 3'] - wDup.data.records[ind]['column 0'];
-    el['column 4'] = wDup.data.records[ind]['column 4'] - wDup.data.records[ind]['column 1'];
-    el['column 5'] = wDup.data.records[ind]['column 5'] - wDup.data.records[ind]['column 2'];
-});
-```
 
 ## Обращение к данным другого виджета
 
@@ -146,28 +129,7 @@ $("#widget-header-" + w.general.renderTo + "> a").css({
 });
 
  ```
-### скругление углов таблицы
-```javascript
-// Задаем скругление углов для таблицы
-$('#grid-' + w.general.renderTo).css({'border-radius': '8px'})
-```
 
-### раскрасить ячейки
-```javascript
-<div style="color: ${data[2][el] < 0 ? '#93a4ad' : '#49aff8'}" class="table-body-element table-body-element-value">${data[2][el] < 0 ? data[2][el] : `+${data[2][el]}`}</div>
-
-// v2
-[5,6,7].forEach(function(j) {
-    $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
-        $(td).css({
-            'color': 
-                td.innerText < 0 ? '#ff595a' : 
-                td.innerText === 0 ? '#49aff8' : '#56ad83'
-        });
-    }); 
-});
-
-```
 
 
 ## Плоская таблица
@@ -183,82 +145,7 @@ w.dataGridOptions.remoteOperations = false
 typeof @value == 'number' ? @value.toFixed(1).replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ') : @value
 ```
 
-## Текстовый виджет
 
-### выровнять по нижней границе
-```javascript
-// align text at bottom
-$('#widget-' + w.general.renderTo + ' > div.va-widget-body-container > div').css({
-    'position' : 'absolute',
-    'bottom' : 0,
-});
-```
-
-### обращение к данным текстового виджета
-```javascript
-w.general.text = w.data.cols[0] + w.data.cols[1]; // названия колонок
-w.general.text = w.data.rows[0]; // названия строк
-w.general.text =w.data.values[0][0] + w.data.values[1][0];  // значения, [col][row]
-
-```
-
-### Text card sort by index
-```javascript
-w.general.text = "Данные обновлены " + w.data.rows.sort((a,b) => a > b ? -1 : 1  )[0];
-```
-
-### Text card format
-
-#### в свойствах
-```
-Math.round(@value/1000000).toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ')  + `<br\>
-<div style="color:black; font-size:15px">Запланировано оплат</div> 
-<div style="color:grey; font-size:15px">(млн руб.) </div>`
-
-@value < 0 ? (@value * 100).toFixed() +'%' :  '<div style = "color:green">' + (@value * 100).toFixed()+'%</div>'
-
-```
-#### граница виджета
-```
-<style>
-.vl {
-  border-left: 2px solid grey;
-  height: 100%;
-}
-</style>
-<div class="vl"; style="padding-left:5px">
-Согласование условий, млн руб.
-```
-
-
-#### JS code
-
-```javascript
-
-let fact = w.data.values[0][0].toFixed(1);
-let plan = w.data.values[1][0].toFixed(1);
-
-if (+fact > +plan) {
-    
-    w.general.text =(
-        '<div>' + fact 
-        + '</div><div style="color:grey; font-size:16px;line-height: 25px;">' + plan + '</div>'
-        );
-    
-    } else {
-       w.general.text =(
-        '<div style="color:coral;  ">' + fact 
-        + '</div><div style="color:black; font-size:16px; font-weight:bold; line-height: 25px;">' + plan + '</div>'
-        );
-    }
-
-
-TextRender({
-    text: w.general,
-    style: w.style
-});
-
-```
 
 ## Line marker symbol
 
