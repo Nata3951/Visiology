@@ -180,3 +180,13 @@ w.tooltip.formatter = function () {
     return s;
 };
 ```
+
+##// using formatter
+w.plotOptions.series.dataLabels.formatter = function() {
+    return this.y + '%';
+};
+
+w.plotOptions.series.dataLabels.formatter = function() {
+    console.log('test this', this);
+    return this.y + '%';
+};
