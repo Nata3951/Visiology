@@ -51,7 +51,7 @@ w.plotOptions.series.lineWidth = 4;
 // заголовок виджета: отступы и высота
 $(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
     'padding': '15px',
-    'height' : '60px',
+    'height' : '90px',
     'text-align' : 'left',
 });
 
