@@ -1,6 +1,21 @@
+let background =  '#18324b'
+let azure = "#2196f";
+let orange_bar = "#ff9800";
+let turq = '#00bcd4';
+let purple = '#00bcd4';
+let lime = '#cddc39';
+let text1 = '#fafafa';
+let text2 = '#9e9e9e';
+// светофор
+let red = '#ff5252';
+let orange = '#ffb300';
+let yellow = '#ffd740';
+let green = '#aed581';
+
+
 //  фон виджета
  $(`#widget-${w.general.renderTo}`).css({
-      'background-color': '#18324b',
+      'background-color': background,
       'border-radius' : '8px'
      });
 
@@ -20,5 +35,5 @@ $(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
 $(`#widget-${w.general.renderTo} .va-widget-header`).css({
     'text-align' : 'left',
     'font' : 'bold 22px Open Sans',
-    'color' : '#fafafa'
+    'color' : text1
 });
