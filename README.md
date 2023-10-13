@@ -182,6 +182,7 @@ w.tooltip.formatter = function () {
 ```
 
 ##// using formatter
+```javascript
 w.plotOptions.series.dataLabels.formatter = function() {
     return this.y + '%';
 };
@@ -190,3 +191,4 @@ w.plotOptions.series.dataLabels.formatter = function() {
     console.log('test this', this);
     return this.y + '%';
 };
+```
