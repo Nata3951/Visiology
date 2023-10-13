@@ -1,16 +1,16 @@
 let background =  '#18324b';
-let header_font_spec = 'bold 22px Open Sans';
+let row_dark = '#00000030';
+
 // светофор
 let red = '#ff5252';
 let orange = '#ffb300';
 let yellow = '#ffd740';
 let green = '#aed581';
-// таблица 
-let row_light = '#293c52';
-let row_dark = '#1e3249';
+
 // текст 
 let text1 = '#fafafa';
 let text2 = '#9e9e9e';
+
 // график 
 let azure = "#2196f3";
 let orange_b = "#ff9800";
@@ -68,4 +68,9 @@ $(`#table-${w.general.renderTo} td`)
     .css({
         'font' : '18px Open Sans',
         'color' : text1,
-    });
+  });
+
+// зебра
+$(`#table-${w.general.renderTo} tbody tr:nth-child(odd)`)
+.css("background-color", row_dark);
+
