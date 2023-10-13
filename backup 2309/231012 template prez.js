@@ -72,6 +72,17 @@ $(`#table-${w.general.renderTo} > thead  th`).css({
     "padding" : "3px 5px",
 });
 
+// фиксируем шапку
+$('#table-' + w.general.renderTo).css({'border-collapse':'initial'});
+document.getElementById("grid-"+ w.general.renderTo).addEventListener("scroll", function(){
+   var translate = "translate(0,"+this.scrollTop+"px)";
+   this.querySelector("thead").style.transform = translate;
+});
+
+// зебра
+$(`#table-${w.general.renderTo} tbody tr:nth-child(odd)`)
+.css("background-color", row_dark);
+
 // ячейки таблицы: шрифт, границы
 $(`#table-${w.general.renderTo} td`)
     .css({
@@ -81,7 +92,15 @@ $(`#table-${w.general.renderTo} td`)
         'border-width' : '1px',
     });
 
-// зебра
-$(`#table-${w.general.renderTo} tbody tr:nth-child(odd)`)
-.css("background-color", row_dark);
+// ячейки: выравнивание, padding; 0-based
+$('#table-' + w.general.renderTo + ' tbody tr')
+    .each(function(index,item){
+    $(item.children[4]).css({"text-align": "center"});
+    $(item.children[5]).css({"text-align": "center"});
+    $(item.children[6]).css({"text-align": "right"});
+    $(item.children).css({"padding-left": "10px", "padding-right": "10px"});
+});
+
+
+
 
