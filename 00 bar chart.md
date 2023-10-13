@@ -1,5 +1,5 @@
 ### // расстояние до оси
-w.general.marginLeft = 300; // расстояние до оси
+w.general.marginLeft = 300; 
 
 
 ### // форматирование подписей stacked bar
