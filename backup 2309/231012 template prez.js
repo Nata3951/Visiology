@@ -94,13 +94,13 @@ $(`#table-${w.general.renderTo} td`)
     });
 
 // ячейки: выравнивание, padding; 0-based
-$('#table-' + w.general.renderTo + ' tbody tr')
-    .each(function(index,item){
-    $(item.children[4]).css({"text-align": "center"});
-    $(item.children[5]).css({"text-align": "center"});
-    $(item.children[6]).css({"text-align": "right"});
-    $(item.children).css({"padding-left": "10px", "padding-right": "10px"});
-});
+// $('#table-' + w.general.renderTo + ' tbody tr')
+//     .each(function(index,item){
+//     $(item.children[4]).css({"text-align": "center"});
+//     $(item.children[5]).css({"text-align": "center"});
+//     $(item.children[6]).css({"text-align": "right"});
+//     $(item.children).css({"padding-left": "10px", "padding-right": "10px"});
+// });
 
 // ГРАФИК 
 w.yAxis.gridLineColor = line;//линии, направляющие
