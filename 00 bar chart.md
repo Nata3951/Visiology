@@ -1,6 +1,11 @@
 ### // расстояние до оси
 w.general.marginLeft = 300; 
 
+###  horizontal bar
+
+// расположим подписи в центре бара
+w.plotOptions.series.dataLabels.inside = true;
+
 
 ### // форматирование подписей stacked bar
 
