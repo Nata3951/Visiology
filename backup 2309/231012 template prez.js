@@ -18,6 +18,7 @@ let border_color =  '#33465b';
 let border_width = '1px';
 
 // график 
+let line = '#33465b';
 let azure = "#2196f3";
 let orange_b = "#ff9800";
 let turq = '#00bcd4';
@@ -100,6 +101,17 @@ $('#table-' + w.general.renderTo + ' tbody tr')
     $(item.children[6]).css({"text-align": "right"});
     $(item.children).css({"padding-left": "10px", "padding-right": "10px"});
 });
+
+// ГРАФИК 
+w.yAxis.gridLineColor = line;//линии, направляющие
+w.yAxis.gridLineWidth = 1;
+w.xAxis.lineColor = line;
+w.plotOptions.bar = { borderWidth: 0 };
+w.series[0].color = red;
+
+// w.general.marginLeft = 300; // расстояние до оси
+
+
 
 
 
