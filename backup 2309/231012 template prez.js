@@ -3,17 +3,14 @@ let line = '#33465b';
 let fontSizeMain = '22px';
 let fontSizeSupport = '18px';
 let fontFamily = 'Open Sans';
-
+let text1 = '#fafafa';
+let text2 = '#9e9e9e';
 
 // светофор
 let red = '#ff5252';
 let orange = '#ffb300';
 let yellow = '#ffd740';
 let green = '#aed581';
-
-// текст 
-let text1 = '#fafafa';
-let text2 = '#9e9e9e';
 
 // таблица
 let table_background = "#233c53";
@@ -37,11 +34,12 @@ let lime = '#cddc39';
 w.yAxis.OnTick = false; 
 w.yAxis.endOnTick = false;
 w.plotOptions.series.borderColor = 'transparent';
+// w.series[0].borderWidth = 0;
 // w.tooltip.crosshairs = true;
 // w.tooltip.shared = true;
 // w.plotOptions.series.lineWidth = 4;
 
-w.xAxis.labels.style = ({
+let axLabelStyle = ({
     'color' : text2,
     'fontSize': fontSizeSupport,
     'fontFamily' : fontFamily,
@@ -49,13 +47,8 @@ w.xAxis.labels.style = ({
     'textOverflow': 'allow'
 });
 
-w.yAxis.labels.style = ({
-    'color' : text2,
-    'fontSize': fontSizeSupport,
-    'fontFamily' : fontFamily,
-    'wordBreak' : 'break-all', 
-    'textOverflow': 'allow'
-});
+w.xAxis.labels.style = axLabelStyle;
+w.yAxis.labels.style = axLabelStyle;
 
 w.plotOptions.series.dataLabels.style = ({
     'color' : text1,
