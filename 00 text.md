@@ -1,5 +1,12 @@
 ## Текстовый виджет
 
+### граница виджета
+```javascript
+$('#widget-' + w.general.renderTo).css({
+    'border-right': "2px solid #494b6f",
+});
+```
+
 ### выровнять по нижней границе
 ```javascript
 // align text at bottom
