@@ -52,9 +52,18 @@ w.plotOptions.series.lineWidth = 4;
 // заголовок виджета: отступы и высота
 $(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
     'padding': '15px',
-    'height' : '90px',
+    'height' : '70px',
     'text-align' : 'left',
 });
+
+// текст в заголовке виджета
+$(`#widget-${w.general.renderTo} .va-widget-header`)
+    .html(`<span>Отгружено за период</span> <span style='font-weight:normal'>тонн</span>`)
+    .css({
+        'display': 'flex',
+        'justify-content': 'space-between',
+        'align-items':'end',
+    });
 
 // заголовок виджета: шрифт
 $(`#widget-${w.general.renderTo} .va-widget-header`).css({
