@@ -1,4 +1,8 @@
 let background =  '#18324b';
+let line = '#33465b';
+let fontSizeMain = '22px';
+let fontSizeSupport = '18px';
+let fontFamily = 'Open Sans';
 
 
 // светофор
@@ -18,7 +22,6 @@ let border_color =  '#33465b';
 let border_width = '1px';
 
 // график 
-let line = '#33465b';
 let azure = "#2196f3";
 let orange_b = "#ff9800";
 let turq = '#00bcd4';
@@ -40,25 +43,40 @@ w.plotOptions.series.borderColor = 'transparent';
 
 w.xAxis.labels.style = ({
     'color' : text2,
-    'fontSize': '18px',
-    'fontFamily' : 'Open Sans',
+    'fontSize': fontSizeSupport,
+    'fontFamily' : fontFamily,
     'wordBreak' : 'break-all', 
     'textOverflow': 'allow'
 });
 
 w.yAxis.labels.style = ({
     'color' : text2,
-    'fontSize': '18px',
-    'fontFamily' : 'Open Sans',
+    'fontSize': fontSizeSupport,
+    'fontFamily' : fontFamily,
     'wordBreak' : 'break-all', 
     'textOverflow': 'allow'
 });
 
 w.plotOptions.series.dataLabels.style = ({
     'color' : text1,
-    'fontSize': '18px',
-    'fontFamily' : 'Open Sans',
+    'fontSize': fontSizeSupport,
+    'fontFamily' : fontFamily,
 });
+
+w.legend.itemStyle = ({
+    'color' : text2,
+    'fontSize': fontSizeSupport,
+    'fontFamily' : fontFamily,
+});
+
+// ГРАФИК 
+w.yAxis.gridLineColor = line;//линии, направляющие
+w.yAxis.gridLineWidth = 1;
+w.xAxis.lineColor = line;
+w.plotOptions.bar = { borderWidth: 0 };
+w.series[0].color = red;
+
+// w.general.marginLeft = 300; // расстояние до оси
 
 
 //  фон виджета
@@ -81,7 +99,7 @@ $(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
 
 // текст в заголовке виджета
 $(`#widget-${w.general.renderTo} .va-widget-header`)
-    .html(`<span>Отгружено за период</span> <span style='font-weight:normal'>тонн</span>`)
+    .html(`<span>Отгружено за период</span> <span style='font-weight:normal; font-size:80%'>тонн</span>`)
     .css({
         'display': 'flex',
         'justify-content': 'space-between',
@@ -91,7 +109,8 @@ $(`#widget-${w.general.renderTo} .va-widget-header`)
 // заголовок виджета: шрифт
 $(`#widget-${w.general.renderTo} .va-widget-header`).css({
     'text-align' : 'left',
-    'font' : 'bold 22px Open Sans',
+    'fontSize': fontSizeSupport,
+    'fontFamily' : fontFamily,
     'color' : text1
 });
 
@@ -134,14 +153,7 @@ $(`#table-${w.general.renderTo} td`)
 //     $(item.children).css({"padding-left": "10px", "padding-right": "10px"});
 // });
 
-// ГРАФИК 
-w.yAxis.gridLineColor = line;//линии, направляющие
-w.yAxis.gridLineWidth = 1;
-w.xAxis.lineColor = line;
-w.plotOptions.bar = { borderWidth: 0 };
-w.series[0].color = red;
 
-// w.general.marginLeft = 300; // расстояние до оси
 
 
 
