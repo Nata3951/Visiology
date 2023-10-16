@@ -102,7 +102,7 @@ $(`#widget-${w.general.renderTo} .va-widget-header`)
 // заголовок виджета: шрифт
 $(`#widget-${w.general.renderTo} .va-widget-header`).css({
     'text-align' : 'left',
-    'fontSize': fontSizeSupport,
+    'fontSize': fontSizeMain,
     'fontFamily' : fontFamily,
     'color' : text1
 });
