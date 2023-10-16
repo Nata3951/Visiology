@@ -34,9 +34,32 @@ let lime = '#cddc39';
 w.yAxis.OnTick = false; 
 w.yAxis.endOnTick = false;
 w.plotOptions.series.borderColor = 'transparent';
-w.tooltip.crosshairs = true;
-w.tooltip.shared = true;
-w.plotOptions.series.lineWidth = 4;
+// w.tooltip.crosshairs = true;
+// w.tooltip.shared = true;
+// w.plotOptions.series.lineWidth = 4;
+
+w.xAxis.labels.style = ({
+    'color' : text2,
+    'fontSize': '18px',
+    'fontFamily' : 'Open Sans',
+    'wordBreak' : 'break-all', 
+    'textOverflow': 'allow'
+});
+
+w.yAxis.labels.style = ({
+    'color' : text2,
+    'fontSize': '18px',
+    'fontFamily' : 'Open Sans',
+    'wordBreak' : 'break-all', 
+    'textOverflow': 'allow'
+});
+
+w.plotOptions.series.dataLabels.style = ({
+    'color' : text1,
+    'fontSize': '18px',
+    'fontFamily' : 'Open Sans',
+});
+
 
 //  фон виджета
  $(`#widget-${w.general.renderTo}`).css({
