@@ -1,13 +1,6 @@
 let fs = '18px';
 let borderRadius = '8px'; // Радиус скругления
 
-
-
-w.data.data = [{
-    text: 'По названию',
-    id: 'nameFilter'
-}]
-
 FilterRender({
     filter: w.general,
     style: w.style,
