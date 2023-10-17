@@ -19,13 +19,15 @@ let border_color =  '#33465b';
 let border_width = '1px';
 
 // график 
-let azure = "#2196f3";
-let orange_b = "#ff9800";
-let turq = '#00bcd4';
-let turq2 = '#3d90a8';
-let purple = '#9c27b0';
-let purple2 = '#6b328d';
-let lime = '#cddc39';
+let series_colors = [
+    "#2196f3", // azure
+    "#ff9800", // orange
+    '#00bcd4', // бирюза
+    '#3d90a8', // бирюза 2
+    '#9c27b0', // purple 
+    '#6b328d', // purple2
+    '#cddc39' // lime
+    ]
 
 
 
@@ -33,7 +35,10 @@ let lime = '#cddc39';
 // bar chart
 w.yAxis.OnTick = false; 
 w.yAxis.endOnTick = false;
-w.plotOptions.series.borderColor = 'transparent';
+w.series.forEach((el, ind) => {
+    el.borderWidth = 0;
+    el.color = series_colors[ind];
+});
 // w.series[0].borderWidth = 0;
 // w.tooltip.crosshairs = true;
 // w.tooltip.shared = true;
