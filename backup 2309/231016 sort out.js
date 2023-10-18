@@ -51,3 +51,12 @@ if (sumCol2)
 if (sumCol3) 
     w.data.records[rowCount]["column 3"] = sumCol3;
 
+// partial match
+// https://complete-concrete-concise.com/tutorials/webdev/front-end-basics/attribute-selectors-advanced-css-selectors-part-4/
+      for (let elem of links) {
+            if (elem.matches('[href*="://"]') && !elem.matches('[href^="http://internal"]')) {
+                console.log("test Ссылка на архив: " + elem.href);
+                elem.style.backgroundColor = 'gold';
+            }
+        }
+
