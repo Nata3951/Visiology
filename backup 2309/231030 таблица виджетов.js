@@ -1,18 +1,24 @@
+
+
+
 let mainDivId = w.general.renderTo;
 
-// Тип виджет / Название виджета / 
-
 let mainDiv = document.getElementById(mainDivId);
-//let newElem = document.createElement('div');
-//mainDiv.appendChild(newElem);
+
+
+
 
 mainDiv.innerHTML = `
     <style>
+        body {
+            font-family : Open Sans;
+        }
+    
         .title {
             width: 100%;
-            text-align: center;
-            font-size: 2rem;
-            padding: 30px;
+            text-align: left;
+            font-size: 30px;
+            padding: 20px;
             background-color: pink;
         }
         
@@ -25,9 +31,10 @@ mainDiv.innerHTML = `
         .image-container div {
             display: inline-block;
             padding: 20px;
-            min-width: 30%;
-            max-width: 30%;
-            text-align: center;
+            min-width: 20%;
+            max-width: 20%;
+            text-align: left;
+            font-size: 18px;
         }
         
         .image-container img {
@@ -35,35 +42,49 @@ mainDiv.innerHTML = `
             height: auto;
         }
     </style>
-`
+`;
 
-let header = createElem('div', 'header', ['title'], mainDivId)
-header.innerHTML = 'Карты'
+// Тип виджета / Название виджета / 
 
-let imageContainerId = 'image-container';
-let imageContainer = createElem('div', imageContainerId, ['image-container'], mainDivId)
+let widget_types = new Set();
+let index_of_type = w.data.rowHeaders.indexOf('widget_type');
+w.data.rows.forEach((el, ind) => widget_types.add(el[index_of_type]) );
 
-for (let i = 0; i < 5; i++) {
+console.log('test array', Array.from(widget_types));
+
+// Array.from(widget_types).forEach((el, ind) => console.log('test el', el));
+
+
+Array.from(widget_types).forEach((el,ind) => { 
+
+    let headerId = 'header'+ind;
+    let header = createElem('div', headerId, ['title'], mainDivId);
+    header.innerHTML = el;
     
-    let tmpImgContainerId = 'image-container-next-lvl-' + i;
-    let tmpImgContainer = createElem('div', tmpImgContainerId, [], imageContainerId)
+    let imageContainerId = 'image-container'+ind;
+    let imageContainer = createElem('div', imageContainerId, ['image-container'], mainDivId);
     
-    let image = createElem('img', 'img-' + i, [], tmpImgContainerId)
-    image.setAttribute('src', 'https://img-fotki.yandex.ru/get/96333/10235337.3/0_15dec3_1535c4e_orig.jpg')
-    
-    let linkID = 'a-' + i
-    let link = createElem('a', linkID, [], tmpImgContainerId)
-    let label = createElem('label', 'label-' + i, [], linkID)
-    label.innerHTML = 'Widget ' + i    
+    for (let i = 0; i < 5; i++) {
+        
+        let tmpImgContainerId = 'image-container-lvl2-' + ind + i;
+        let tmpImgContainer = createElem('div', tmpImgContainerId, [], imageContainerId);
+        
+        let image = createElem('img', 'img-' + ind + i, [], tmpImgContainerId);
+        image.setAttribute('src', 'https://img-fotki.yandex.ru/get/96333/10235337.3/0_15dec3_1535c4e_orig.jpg');
+        
+        let linkID = 'a-' + ind + i;
+        let link = createElem('a', linkID, [], tmpImgContainerId);
+        let label = createElem('label', 'label-'+ ind + i, [], linkID);
+        label.innerHTML = 'Widget '+ ind + i  ;  
+    }
 }
+);
 
 
 
 
 function createElem(elemType, elemID, classes, parentID) {
-    
-    //console.log(elemType, elemID, classes, parentID)
-    
+
     let newElem = document.createElement(elemType);
     
     if (elemID) { 
