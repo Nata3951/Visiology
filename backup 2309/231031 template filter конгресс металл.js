@@ -1,3 +1,6 @@
+let text1 = '#fafafa';
+let text2 = '#9e9e9e';
+
 let fs = '18px';
 let borderRadius = '8px'; // Радиус скругления
 
@@ -15,13 +18,12 @@ $(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
     'text-align' : 'left',
 });
 
-$('#' + w.general.renderTo + ' i').css('color', '#2f465d');// цвет крестика, стрелки
-
-
+$('#' + w.general.renderTo + ' i').css('color', text2);// цвет крестика, стрелки
 
 $('#' + w.general.renderTo).css({ // Скругление фильтра
     'border-radius': borderRadius,
-    'background-color': '#2f465d'
+    'background-color': '#2f465d',
+    'color': text1,
 }).find('.rb-filter-header-container').css({ 
     'border-radius': borderRadius,
     'font-size' : fs,
