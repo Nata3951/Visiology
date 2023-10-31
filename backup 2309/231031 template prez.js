@@ -27,7 +27,7 @@ let series_colors = [
     '#9c27b0', // purple 
     '#6b328d', // purple2
     '#cddc39' // lime
-    ]
+    ];
 
 
 
@@ -72,7 +72,7 @@ w.yAxis.gridLineColor = line;//линии, направляющие
 w.yAxis.gridLineWidth = 1;
 w.xAxis.lineColor = line;
 w.plotOptions.bar = { borderWidth: 0 };
-w.series[0].color = red;
+// w.series[0].color = red;
 
 // w.general.marginLeft = 300; // расстояние до оси
 
@@ -83,16 +83,19 @@ w.series[0].color = red;
       'border-radius' : '8px'
      });
 
-// поля виджета
- $(`#widget-${w.general.renderTo}  > div.va-widget-body-container`).css({
-      'padding': '10px',
-    });
- 
 // заголовок виджета: отступы и высота
 $(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
     'padding': '15px',
     'height' : '70px',
     'text-align' : 'left',
+});
+
+// заголовок виджета: шрифт
+$(`#widget-${w.general.renderTo} .va-widget-header`).css({
+    'text-align' : 'left',
+    'fontSize': fontSizeMain,
+    'fontFamily' : fontFamily,
+    'color' : text1
 });
 
 // текст в заголовке виджета
@@ -103,14 +106,6 @@ $(`#widget-${w.general.renderTo} .va-widget-header`)
         'justify-content': 'space-between',
         'align-items':'end',
     });
-
-// заголовок виджета: шрифт
-$(`#widget-${w.general.renderTo} .va-widget-header`).css({
-    'text-align' : 'left',
-    'fontSize': fontSizeMain,
-    'fontFamily' : fontFamily,
-    'color' : text1
-});
 
 // ТАБЛИЦА
 // шапка
