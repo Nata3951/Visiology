@@ -1,3 +1,13 @@
+// insert with jquery
+$('<div>', {
+    id: 'id10',
+    class: 'chart-container',
+    text: 'this is MAIN CONTAINER'
+    })
+    .appendTo(mainDiv);
+
+
+// formatter
 dataLabels: {
 
                 formatter: function () {
