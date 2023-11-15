@@ -27,4 +27,6 @@ w.xAxis.labels.style = ({
     'wordBreak' : 'break-all', 
     'textOverflow': 'allow'
 });
+
+w.xAxis.labels.autoRotation = undefined;
 ```
