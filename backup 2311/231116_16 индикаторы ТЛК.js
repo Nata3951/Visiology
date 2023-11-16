@@ -11,7 +11,7 @@ visApi().onSelectedValuesChangedListener({guid: w.general.renderTo + '_granulari
 if (!unitValue) {
     setTimeout(() => {
         refresh();
-    }, 500);
+    }, 200);
 }
 
 function refresh() {
@@ -22,18 +22,25 @@ function refresh() {
 
 const indicListId = '591411e8afa549dab2769bde969ed349';
 
-
-let roundTo = 2;
+// до какого знака округляем
+let roundTo = 1;
 const fact = w.data.values[1][0].toFixed(roundTo);
 const plan = unitValue == "target_plan" ? w.data.values[0][0].toFixed(roundTo) : w.data.values[3][0].toFixed(roundTo);
-const unit = w.data.rows[0][1];
+const unit = "млрд руб";
+
+let prd = w.data.rows[0][1];
 
 // подготовим процент выполнения плана, с проверкой на наличие факта и плана
 let percent = Math.round((fact/plan) * 100);
-if (fact / plan === 0 || !isFinite(fact / plan)) {
-    percent = 0;
-}
-let indicator_color = percent >= 100 ? "#049D4B" : "tomato";
+if (!fact || !plan ||!isFinite(fact / plan)) percent='н/д';
+
+
+// подготовим цвет индикатора
+let indicator_color; 
+if (prd === 'год' || prd === '4 квартал')  indicator_color = '#4291D0';
+else if (percent=='н/д') indicator_color = "#37474F";
+else if (percent <= 100) indicator_color = "#049D4B";
+else indicator_color = "tomato";
 
 
 TextRender({
@@ -58,7 +65,7 @@ mainDiv.innerHTML = `
     #${id} .fact {
         margin-left:20px;
         padding-bottom:0px;
-        line-height: 1.1;
+        line-height: 1.25;
         font-size: 48px;
         font-weight: bold;
         color : ${indicator_color}
@@ -83,7 +90,7 @@ mainDiv.innerHTML = `
        width:70%;
         }
         
-    .plan-percent {
+    #${id} .plan-percent {
        display:inline-block; 
        width: 30%; 
        text-align:right; 
@@ -119,8 +126,9 @@ $('<span>', {
 
 $('<span>', {
     class: 'plan-percent',
-    text: `${percent}%`
+    text: isNaN(percent) ? percent : `${percent}%`
 }).appendTo(`#${w.general.renderTo} .plan-container`);
+
 
 $('#' + w.general.renderTo + "> div")
     .css({
