@@ -31,3 +31,11 @@ w.plotOptions.series.dataLabels.formatter = function() {
     return this.y + '%';
 };
 
+// formatter
+dataLabels: {
+
+                formatter: function () {
+                                if (this.point.value !== 0) {
+                                return this.point.value;
+                                }
+                            return null;
