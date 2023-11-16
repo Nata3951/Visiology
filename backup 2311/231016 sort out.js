@@ -7,14 +7,7 @@ $('<div>', {
     .appendTo(mainDiv);
 
 
-// formatter
-dataLabels: {
 
-                formatter: function () {
-                                if (this.point.value !== 0) {
-                                return this.point.value;
-                                }
-                            return null;
 
 
 // pie chart series colors
