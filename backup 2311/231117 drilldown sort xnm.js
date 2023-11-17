@@ -49,6 +49,17 @@ visApi().onDrillDownListener({widgetGuid: w.general.renderTo, guid: "j231119"}, 
     let h2 = array.length * 22.22 + 100;
     w.general.height = h2;
     
+    setTimeout(function() {
+    // Highcharts.chart({
+    // chart: w.general,
+    // xAxis: w.xAxis,
+    // yAxis: w.yAxis,
+    // plotOptions: w.plotOptions,
+    // series: info.dataFrame,
+    // legend: w.legend,
+    // tooltip: w.tooltip
+    // });
+    }, 500);
 
     $('#' + w.general.renderTo).find('.highcharts-container')
     .height(h2);
@@ -64,7 +75,7 @@ visApi().onDrillDownListener({widgetGuid: w.general.renderTo, guid: "j231119"}, 
         'overflow-y': 'auto'
          });
 
-    setTimeout(function() {}, 500);
+    
     
     console.log('test inner w2', w)
 
