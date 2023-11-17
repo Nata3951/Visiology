@@ -7,6 +7,8 @@ console.log ('test h4', w.series[0].data.length * 22.22 + 100)
 // svg inside widget-body
 w.general.height = w.series[0].data.length * 22.22 + 100; 
 
+
+
 Highcharts.chart({
     chart: w.general,
     xAxis: w.xAxis,
@@ -45,11 +47,9 @@ visApi().onDrillDownListener({widgetGuid: w.general.renderTo, guid: "j231119"}, 
     });
     
     let h2 = array.length * 22.22 + 100;
+    w.series[0].color = 'gold';
     
-    w.general.height = h2;
-    w.series[0].pointPadding = 5;
-    
-    
+
     $('#' + w.general.renderTo).find('.highcharts-container')
     .height(h2);
     
@@ -66,12 +66,27 @@ visApi().onDrillDownListener({widgetGuid: w.general.renderTo, guid: "j231119"}, 
 
     setTimeout(function() {}, 500);
     
-    console.log('test inner w', w)
+    console.log('test inner w2', w)
 
 });
 
 //guid должен быть уникальным (например дэшборд-лист-виджет-начало или конец кода) 
 visApi().onDrillUpListener({widgetGuid: w.general.renderTo, guid: 'k231119'}, function (info) {
+
+
+    $('#' + w.general.renderTo).find('.highcharts-container')
+    .height(h);
+    
+    $('#' + w.general.renderTo).find('.highcharts-background')
+    .height(h);
+    
+    $('#' + w.general.renderTo).find('.highcharts-plot-background')
+    .height(h);
+    
+    $('#' + w.general.renderTo)
+    .css({
+        'overflow-y': 'auto'
+         });
 
 });
 
