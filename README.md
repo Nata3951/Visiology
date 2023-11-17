@@ -163,4 +163,25 @@ w.yAxis.plotBands = {color: "red", from:0.9, to: 1.1};
 "<b>" + @total + "</b>"
 ```
 
-
+## Tooltip
+```javascript
+const chart = Highcharts.chart({
+    chart: w.general,
+    xAxis: w.xAxis,
+    yAxis: w.yAxis,
+    plotOptions: w.plotOptions,
+    series: w.series,
+    drilldown: w.drilldown,
+    legend: w.legend,
+    tooltip: {
+            borderWidth: 1,
+            borderRadius: 8,
+            headerFormat: '<span style="font-size:12px;color:#757575;font-family:Open Sans">{point.key}</span><table>',
+            pointFormat: '<tr><td style="font-size:12px;font-family:Open Sans;color:{series.color};padding:10">{series.name}: </td>' +
+            '<td style="padding:0;text-align:right"><b style="font-size:13px;color:#212121;font-family:Open Sans">{point.y:,.2f}</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+});
+```
