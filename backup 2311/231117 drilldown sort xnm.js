@@ -1,3 +1,12 @@
+//= .va-widget-body
+var h = $('#' + w.general.renderTo).height(); 
+
+// console.log ('test h', h)
+console.log ('test h4', w.series[0].data.length * 22.22 + 100)
+
+// svg inside widget-body
+w.general.height = w.series[0].data.length * 22.22 + 100; 
+
 Highcharts.chart({
     chart: w.general,
     xAxis: w.xAxis,
@@ -8,6 +17,10 @@ Highcharts.chart({
     legend: w.legend,
     tooltip: w.tooltip
 });
+
+$('#' + w.general.renderTo).find('.highcharts-container').css({
+'overflow-y': 'auto'
+ }).height(h);
 
 
 visApi().onDrillDownListener({widgetGuid: w.general.renderTo, guid: "j231119"}, function (info) {
@@ -30,8 +43,30 @@ visApi().onDrillDownListener({widgetGuid: w.general.renderTo, guid: "j231119"}, 
         info.widgetDataContainer.dataFrame.rows[ind] = el[0];
         info.widgetDataContainer.dataFrame.values[0][ind] = el[1];
     });
+    
+    let h2 = array.length * 22.22 + 100;
+    
+    w.general.height = h2;
+    w.series[0].pointPadding = 5;
+    
+    
+    $('#' + w.general.renderTo).find('.highcharts-container')
+    .height(h2);
+    
+    $('#' + w.general.renderTo).find('.highcharts-background')
+    .height(h2);
+    
+    $('#' + w.general.renderTo).find('.highcharts-plot-background')
+    .height(h2);
+    
+    $('#' + w.general.renderTo)
+    .css({
+        'overflow-y': 'auto'
+         });
 
-    setTimeout(function() {}, 10);
+    setTimeout(function() {}, 500);
+    
+    console.log('test inner w', w)
 
 });
 
@@ -41,4 +76,3 @@ visApi().onDrillUpListener({widgetGuid: w.general.renderTo, guid: 'k231119'}, fu
 });
 
 //КОНЕЦ СОРТИРОВКИ НА ВТОРОМ УРОВНЕ DRILLDOWN
-
