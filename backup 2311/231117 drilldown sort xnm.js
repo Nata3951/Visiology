@@ -2,7 +2,7 @@
 var h = $('#' + w.general.renderTo).height(); 
 
 // console.log ('test h', h)
-console.log ('test h4', w.series[0].data.length * 22.22 + 100)
+// console.log ('test h4', w.series[0].data.length * 22.22 + 100)
 
 // svg inside widget-body
 w.general.height = w.series[0].data.length * 22.22 + 100; 
@@ -47,17 +47,17 @@ visApi().onDrillDownListener({widgetGuid: w.general.renderTo, guid: "j231119"}, 
     });
     
     let h2 = array.length * 22.22 + 100;
-    w.series[0].color = 'gold';
+    w.general.height = h2;
     
 
     $('#' + w.general.renderTo).find('.highcharts-container')
     .height(h2);
     
     $('#' + w.general.renderTo).find('.highcharts-background')
-    .height(h2);
+    .height('100%');
     
     $('#' + w.general.renderTo).find('.highcharts-plot-background')
-    .height(h2);
+    .height('100%');
     
     $('#' + w.general.renderTo)
     .css({
