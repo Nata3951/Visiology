@@ -1,3 +1,12 @@
+// gradient fill widget header
+
+$(`#widget-${w.general.renderTo} div.va-widget-header-container`).css({
+    'padding': '15px',
+    'height' : '70px',
+    'text-align' : 'left',
+    'background' : 'linear-gradient(to bottom right, #00006699, transparent)',
+});
+
 // x axes no rotate + formatter
 
 w.xAxis.labels.autoRotation = undefined;
