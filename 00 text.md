@@ -8,6 +8,8 @@ $('#widget-' + w.general.renderTo).css({
 ```
 
 ### выровнять по нижней границе
+https://www.freecodecamp.org/news/how-to-center-an-absolute-positioned-element/
+
 ```javascript
 // align text at bottom
 $('#widget-' + w.general.renderTo + ' > div.va-widget-body-container > div').css({
