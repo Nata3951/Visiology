@@ -17,3 +17,9 @@ w.legend.itemStyle = ({
 });
 
 w.legend.width = '170px',
+
+
+// сдвинуть по вертикали
+
+w.legend.x = -120
+w.general.marginTop = 60;
