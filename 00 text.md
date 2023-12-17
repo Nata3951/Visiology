@@ -7,11 +7,23 @@ $('#widget-' + w.general.renderTo).css({
 });
 ```
 
-### выровнять по нижней границе
+### выровнять текст по нижней границе
 https://www.freecodecamp.org/news/how-to-center-an-absolute-positioned-element/
 
 ```javascript
-// align text at bottom
+// align text at bottom v1
+$(`#widget-${w.general.renderTo} .va-widget-body`).css({
+    'display': 'flex',
+   'align-items' : 'flex-end',
+   
+});
+
+$(`#widget-${w.general.renderTo} .va-widget-body div`).css({
+   'height' : 'auto',
+});
+
+
+// align text at bottom v2
 $('#widget-' + w.general.renderTo + ' > div.va-widget-body-container > div').css({
     'position' : 'absolute',
     'bottom' : 0,
