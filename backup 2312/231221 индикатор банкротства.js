@@ -18,7 +18,7 @@ if (index.hasOwnProperty(month)) {
   w.data.rows = [w.data.rows[row1][0], w.data.rows[row2][0], w.data.rows[row3][0]];
 }
 
-console.log('test w', w);
+
 
 const rowsCount = 5;
 const colsCount = 4;
@@ -92,9 +92,15 @@ $('#' + w.general.renderTo + ' div:nth-child(15)').html(w.data.values[2][1]+ ' (
 $('#' + w.general.renderTo + ' div:nth-child(16)').html(w.data.values[2][2]+ ' ('+ (w.data.values[4][2]).toFixed(2).split('.').join(',') +')');
 
 // банкротство
-$('#' + w.general.renderTo + ' div:nth-child(18)').html(w.data.values[5][0]+ ' ('+ (w.data.values[6][0]).toFixed(2).split('.').join(',') +')');
-$('#' + w.general.renderTo + ' div:nth-child(19)').html(w.data.values[5][1]+ ' ('+ (w.data.values[6][1]).toFixed(2).split('.').join(',') +')');
-$('#' + w.general.renderTo + ' div:nth-child(20)').html(w.data.values[5][2]+ ' ('+ (w.data.values[6][2]).toFixed(2).split('.').join(',') +')');
+
+for (let i=0; i<3; i++) {
+    // если рейтинг банкротства не пустой
+    if (w.data.values[5][i]) {
+        $(`#${w.general.renderTo} div:nth-child(${18+i})`).html(w.data.values[5][i]+ ' ('+ w.data.values[6][i] +')');
+    }
+}
+
+// console.log('test w', w);
 
 
 // Раскраска фона div-ов в зависимости от значения
@@ -151,7 +157,7 @@ $('#' + w.general.renderTo + ' div:nth-child(n+18):nth-child(-n+20)').each(funct
     $(this).css('background-color', '#FFFFCC');
   } else if (value === 'высокий') {
     $(this).css('background-color', '#FCC1C1');
-  } else {
+  } else if (value === 'критический') {
     $(this).css('background-color', '#FF6666');
-  }
+  } 
 });
