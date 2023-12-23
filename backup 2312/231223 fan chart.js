@@ -27,20 +27,25 @@ Highcharts.chart({
     xAxis: {
         type: 'category',
         endOnTick: false,
-        plotBands: [{
-            color: 'white',
-            from: forecast_start,
-            label: {
-                text: 'Forecast'
-            }
-        }],
+
         categories: w.data.rows,
         plotLines: [{
             dashStyle: 'dash',
             color: 'slategrey',
             width: 2,
-            value: forecast_start,
+            value: forecast_start-0.5,
             zIndex : 20,
+            label: {
+                text: 'Статистика> <Прогноз &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp',
+                align: 'center',
+                verticalAlign : 'top',
+                textAlign: 'center',
+                rotation: 0,
+                style:{
+                    'color' : 'grey',
+                },
+ 
+            }
         }],
         crosshair: true
     },
