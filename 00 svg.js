@@ -1,4 +1,8 @@
+
+
 // vertical align
+// https://stackoverflow.com/questions/32030276/aligning-an-svg-inline-with-text
+
 
 const ArrowSvg =  `<svg class='icon27' fill="#8da2bf" version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	   width="1.1em" height="1.1em" viewBox="0 0 450 450"
