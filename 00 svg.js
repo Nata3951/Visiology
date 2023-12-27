@@ -12,10 +12,7 @@ const ArrowSvg =  `<svg class='icon27' fill="#8da2bf" version="1.1"  xmlns="http
 </g>
 </svg>
 `
-$('#widget-' + w.general.renderTo).css({
-    'border': '1px solid #1c4680',
-    'border-radius' : '4px',
- });
+
 w.general.text = 'Предпосылки модели ️' + ArrowSvg
 
 
