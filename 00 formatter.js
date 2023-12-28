@@ -1,3 +1,12 @@
+// изменить цвет подписей оси по условию
+        labels :{
+            formatter:function() {
+                console.log('test', this);
+                if(this.pos < forecast_start) return this.value[1]+'кв '+this.value[0];
+                else return `<span style="color: ${blue};"> ${this.value[1]}кв ${this.value[0]} </span>`;
+            },
+
+
 w.xAxis.labels.formatter = function(){
     console.log('test', this.value);
     if (this.value.includes('усто')) return 'Не определено из 1С';
