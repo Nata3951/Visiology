@@ -31,3 +31,19 @@ const chart = Highcharts.chart({
 
 
          pointFormat: "{series.name} : {point.y:,.2f}"
+
+
+//
+
+        tooltip: {
+        backgroundColor: '#212121',
+        borderColor: '#363841',
+        borderWidth: 1,
+        borderRadius: 8,
+        headerFormat: '<span style="font-size:12px;color:#bdbdbd;font-family:Open Sans">{point.key}</span><table>',
+        pointFormat: '<tr><td style="font-size:12px;font-family:Open Sans;color:{series.color};padding:10">{series.name}: </td>' +
+        '<td style="padding:0;text-align:right"><b style="font-size:13px;color:#bdbdbd;font-family:Open Sans">{point.y:,.2f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
