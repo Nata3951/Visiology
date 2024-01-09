@@ -25,6 +25,10 @@ w.xAxis.labels.formatter = function() {
     return this.value.substring(0,4);
 };
 
+w.yAxis.stackLabels.formatter = function(){
+    return Math.round(this.total).toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ');
+};
+
 w.xAxis.labels.formatter = function() {
     return this.value.replace('-', '</br>');
 };
