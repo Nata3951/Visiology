@@ -29,7 +29,8 @@ w.data.records.sort(function(a, b) {
 $(`#table-${w.general.renderTo} th:nth-child(1)`)
 .text('КПЭ')
 .css({
-    "text-align": "center"
+    textAlign: 'left',
+    width: '80%',
 });
 ```
 
