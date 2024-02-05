@@ -155,11 +155,5 @@ w.series[0].marker.symbol = 'circle';
 w.yAxis.plotBands = {color: "red", from:0.9, to: 1.1};
 ```
 
-## 100. Круговая диаграмма
 
-#### 100.100	Cумма в центре
-
-```javascript
-"<b>" + @total + "</b>"
-```
 
