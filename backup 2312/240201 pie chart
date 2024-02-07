@@ -1,0 +1,49 @@
+w.legend.width = '250px';
+w.plotOptions.pie.borderColor = 'transparent';
+
+w.colors = [
+        '#2e2c7b',
+        '#4e4bc2',
+        '#AC4218',
+        '#34328f',
+        '#605ec9',
+        '#7E3113',
+        '#3b38a2',
+        '#413eb6',
+        '#7370d0',
+        '#8583d7',
+        ]
+
+
+Highcharts.chart({
+    chart: w.general,
+    plotOptions: w.plotOptions,
+    series: w.series,
+    drilldown: w.drilldown,
+    legend: w.legend,
+    tooltip: w.tooltip,
+    colors: w.colors
+});
+document.querySelector('#widget-'+w.general.renderTo).style.background = 'rgb(255,255,255)'
+$('#widget-header-' + w.general.renderTo + ' > a')
+    .html('Добыча конденсата, млн тн')
+    .css({'color' : 'black'});
+    
+$(`#pie-title-${w.general.renderTo} div`)
+    .css({
+ 
+        'text-align' : 'left',
+        'font-size': '30px',
+        fontWeight : 'bold',
+        'line-height' : 0.9,
+        position: 'relative',
+        top: -5,
+    })
+    .append('<div style="font-size: 70%; font-weight:normal">млн т</div>');
+    
+$(`#pie-title-${w.general.renderTo} div div`)
+    .css({
+        position: 'relative',
+        left: -10,
+    })
+    
