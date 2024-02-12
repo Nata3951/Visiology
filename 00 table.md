@@ -23,6 +23,14 @@ w.data.records.sort(function(a, b) {
     return Number(Number(a.rowNames[0]) > Number(b.rowNames[0])) ? 1: -1;
 });
 ```
+### убираем лишнюю сортировку
+```javascript
+// убираем лишнюю сортировку
+w.data.columns.forEach((el) => {
+    el.sortable = false;
+});
+```
+
 
 ### CSS hardcoding column names, alignment
 ```javascript
