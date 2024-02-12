@@ -24,9 +24,15 @@ $(`#widget-${w.general.renderTo} .va-widget-body div`).css({
 
 
 // align text at bottom v2
-$('#widget-' + w.general.renderTo + ' > div.va-widget-body-container > div').css({
-    'position' : 'absolute',
-    'bottom' : 0,
+$(`#widget-${w.general.renderTo}`)
+.css({
+   paddingLeft: 10,
+   paddingBottom: 5,
+   borderLeft: '1px solid #cccccc',
+   borderRight: '1px solid #cccccc',
+   display: 'flex',
+   'align-items': 'flex-end',
+//   backgroundColor: '',
 });
 ```
 
