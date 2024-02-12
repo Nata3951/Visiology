@@ -30,3 +30,12 @@ w.xAxis.labels.style = ({
 
 w.xAxis.labels.autoRotation = undefined;
 ```
+
+### colors
+```javascript
+w.series.forEach((el, ind) => {
+    if (el.name.includes('более')) el.color = '#ff6355';
+    else if (el.name.includes('15')) el.color = '#aed581';
+    
+});
+```
