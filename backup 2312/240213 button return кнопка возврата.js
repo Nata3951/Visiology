@@ -27,3 +27,16 @@ thisWidget.onclick = () => {
 }
 
 $(thisWidget).trigger('click')
+
+
+
+...
+
+let widget = $('#'+w.general.renderTo);
+let widgetHeight = widget.height();
+let widgetWidth = widget.width();
+let divDumbellWidth = widgetWidth-divYAxisWidth-100;
+
+var widgetHeight = document.getElementById(w.general.renderTo).offsetHeight
+
+newWidget.style.height = "280px" //(fullHeight/w.data.values.length) + "px"
