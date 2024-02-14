@@ -229,6 +229,7 @@ for (let key in rating) {
             type: 'arearange',
             color: rating[key],
             fillOpacity : 1/6,
+            linkedTo: ':previous',
         }, false);
     }
 
