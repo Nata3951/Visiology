@@ -20,7 +20,8 @@ if (w.data.selected.length < 1){
         // console.log('test ', widgetData.data.rows.at(-1));
         let lastPeriod = widgetData.data.rows.at(-1);
         visApi().setFilterSelectedValues(w.general.renderTo, [lastPeriod], function (response) {});
-        $('#' + w.general.renderTo + ' .rb-filter-header-text span').text(lastPeriod[0] + " " + unit +" " + lastPeriod[1]);
+        [lastPeriod];  
+        // $('#' + w.general.renderTo + ' .rb-filter-header-text span').text(lastPeriod[0] + " " + unit +" " + lastPeriod[1]);
     });
 }
 
