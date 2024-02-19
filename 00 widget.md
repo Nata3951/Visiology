@@ -50,7 +50,14 @@ $(`#widget-header-${w.general.renderTo} > a`)[0]
 ```
 
 
-## тело контейнера
+## поля виджета
+
+```javascript
+w.general.marginLeft = 50
+w.general.marginRight = 10
+w.general.marginTop = 60
+```
+
 
 ```javascript
  $(`#widget-${w.general.renderTo}  > div.va-widget-body-container`).css({
