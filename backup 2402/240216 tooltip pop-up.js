@@ -2,21 +2,8 @@ const tooltipWidth = 351;// Задаем ширину изображение в 
 const tooltipHeight = 228;// Задаем высоту изображение в tooltip
 
 let columnImages = {
-    'Доля имущества в неработоспособном состоянии по отрасли' : 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=1c3d7e351ce54494ac11aec90d84f414&access_token=NoAuth")',
-    'Доля имущества с внеплановым простоем >30 дней по отрасли' : 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=6e147444f6c74da59c796b0869801c9e&access_token=NoAuth")',
-    'Количество имущества в неработоспособном состоянии по отрасли' : 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=1c3d7e351ce54494ac11aec90d84f414&access_token=NoAuth")',
-    'Количество имущества с внеплановым простоем >30 дней по отрасли' : 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=6e147444f6c74da59c796b0869801c9e&access_token=NoAuth")',
-    'Доля имущества с просроченным плановым ремонтом по отрасли' : 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=8bbc9448a8844a98ab7f44280bbfa87a&access_token=NoAuth")',
-    'Доля имущества с внеплановым простоем >60 дней по отрасли' : 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=c4eef76c7b374a59ac73d1a1ac0c4b33&access_token=NoAuth")',
-    'Количество имущества с просроченным плановым ремонтом по отрасли' : 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=8bbc9448a8844a98ab7f44280bbfa87a&access_token=NoAuth")',
-    'Количество имущества с внеплановым простоем >60 дней по отрасли' : 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=c4eef76c7b374a59ac73d1a1ac0c4b33&access_token=NoAuth")',
-    'Глубина ПДЗ по отрасли': 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=9bbbd343320645a68961837d2707e7c9&access_token=NoAuth")',
-    'Доля ПДЗ в ЧЛП по отрасли': 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=4964273c56dc4f559442572244bd6f2b&access_token=NoAuth")',
-    'Доля недополученных технических резервов по отрасли': 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=76e7f552636c4703a88127b52a8e4237&access_token=NoAuth")',
-    'Платежная дисциплина после реструктуризации/МС по отрасли': 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=bb1725bac8ca44e89521000983b208b2&access_token=NoAuth")',
-    'Доля ВС без сертификата летной годности по отрасли': 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=0bd5217515f748edace97d9a8398a151&access_token=NoAuth")',
-    'LTV по отрасли': 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=2faa84cd6d364c46a5d1950d2b25bcc5&access_token=NoAuth")',
-    'Доля имущества, не переданного в аренду/лизинг по отрасли': 'url("https://bi.gtlk.ru/corelogic/api/query/image?fileGuid=6750fda8c5d345eca6e6ed6998827bb4&access_token=NoAuth")'
+    'Доля имущества в неработоспособном состоянии по отрасли' : 'url("https://bi.")',
+    'Доля имущества с внеплановым простоем >30 дней по отрасли' : 'url("https://bi.")',
 };
 
 const containerDiv = document.getElementById(w.general.renderTo);
