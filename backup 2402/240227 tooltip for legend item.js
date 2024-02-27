@@ -167,27 +167,6 @@ function renderChart(newValues) {
     Highcharts.chart({
         chart: {
             renderTo: wDup.general.renderTo,
-        //     events: {
-        //     load: function () {
-        //         var chart = this,
-        //             legend = chart.legend;
-        //             console.log("test this1" + this);
-
-        //         for (var i = 0, len = legend.allItems.length; i < len; i++) {
-        //             (function(i) {
-        //                 var item = legend.allItems[i].legendItem;
-        //                 item.on('mouseover', function (e) {
-        //                     //show custom tooltip here
-        //                     console.log("test mouseover" + i);
-        //                 }).on('mouseout', function (e) {
-        //                     //hide tooltip
-        //                     console.log("test mouseout" + i);
-        //                 });
-        //             })(i);
-        //         }
-
-        //     }
-        // },
         },
         
                
@@ -195,15 +174,14 @@ function renderChart(newValues) {
         legend: {
             enabled: true,
             verticalAlign: 'top',
-            margin: 20,
+            margin: 25,
             useHTML: true,
             labelFormatter: function () {
                 // if legendTooltip set, put it into title attr
                 if (this.options.custom && this.options.custom.legendTooltip) {
-                    console.log('test this', this);
-                     return '<span title="' + this.options.custom.legendTooltip + '">' + this.name + '</span>';
+                     return '<div class="tooltip">' + this.name + '</div>';
                 }
-                return '<span> test2 </span>';
+                return this.name;
             }
         },
         xAxis: {
@@ -379,47 +357,49 @@ function renderChart(newValues) {
     });
     
     
-    $(`#widget-${w.general.renderTo} .highcharts-series-4 span`)
-        .attr("title", "С вероятностью 68% прогнозные значения попадут в указанный диапазон (диапазон соответствует отклонению от среднего значения в размере +/- одно стандартное отклонение)");
- 
-// let mainID = '#widget-' + w.general.renderTo;
-// let box_ = `#widget-${w.general.renderTo} .highcharts-series-4`;
-// let styleForTooltip = document.createElement('style');
+    // $(`#widget-${w.general.renderTo} .highcharts-series-4 span`)
+    //     .attr("title", "С вероятностью 68% прогнозные значения попадут \n в указанный диапазон (диапазон соответствует отклонению \nот среднего значения в размере +/- одно стандартное отклонение)");
 
-// // let tooltipWidth=$(box_).width();
-//             // content : 'test tooltip' // "${el.tooltip}";
+$(`#widget-${w.general.renderTo} style.temp_style`).remove()
 
-// let tooltipWidth= 200;
 
-// styleForTooltip.innerHTML = `
-//         ${box_}::after {
-//             position: absolute;
-//             width: 200px;
-//             background-color: white;
-//             padding : 10px;
-//             content : "test tooltip";
-//             opacity: 0;
-//             visibility: hidden;
-//             top: calc(100% + 15px);
-//             display: block;
-//             border: 1px solid #ccc;
-//             border-radius : 10px;
-//             z-index: 299;
-//             box-shadow: 2px 2px 2px #eee;
-//             font-family: Open Sans;
-//         }
-        
-//             ${box_}:hover::after {
-//             opacity: 1;
-//             visibility: visible;
-//         }
-//   `
-// $(`#widget-${w.general.renderTo}`).append(styleForTooltip);
- 
+$(`<style class = "temp_style">
+
+
+
+#widget-${w.general.renderTo} .tooltip {
+    position: relative;
+    top: 0;
+    }
     
+#widget-${w.general.renderTo} .highcharts-series-4::after {
+    content: "С вероятностью 68% прогнозные значения попадут в указанный диапазон (диапазон соответствует отклонению от среднего значения в размере +/- одно стандартное отклонение)."; 
+    display: block;
+    background-color: white;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    padding : 5px;
+    top: 25px;
+    left: 55px;
+    width: 200px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius : 10px;
+    }
+    
+#widget-${w.general.renderTo} .highcharts-series-4:hover::after {
+    visibility: visible;
+    opacity: 1;
+    }    
+    
+</style>`)
+.appendTo(`#widget-${w.general.renderTo}`)
+ 
 }
 
 
 
 
-console.log('test w', w); 
+
+// console.log('test w', w); 
