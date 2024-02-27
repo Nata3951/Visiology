@@ -78,3 +78,9 @@ const chart = Highcharts.chart({
             
             return str
         }
+
+// через атрибут title 
+
+$(`#widget-${wDup.general.renderTo} .highcharts-series-4 span span`)
+    .attr("title", "С вероятностью 68% прогнозные значения попадут в указанный диапазон (диапазон соответствует отклонению от среднего значения в размере +/- одно стандартное отклонение)");
+    
