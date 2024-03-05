@@ -78,6 +78,29 @@ const chart = Highcharts.chart({
             
             return str
         }
+//
+        tooltip: {
+            shared: true,
+            useHTML: true,
+            formatter: function () {
+                let name =  this.points[0].key;
+                let name_style = "font-size:12px;color:#757575;font-family:Open Sans";
+                let item_style = 'font-size:12px;font-family:Open Sans;padding:10';
+                let value_style = 'padding:0; text-align:right;font-weight:bold; font-size:12px;color:#212121;font-family:Open Sans';
+            //   заголовок тултипа
+                let str = `<span style="${name_style}">${name[1]}кв. ${name[0]}, ${name[2]}:</span><table>`;
+                this.points.forEach((el, ind) => {
+                let item = `<tr><td style="color:${this.points[ind].series.color}; ${item_style}">${this.points[ind].series.name}: </td>`;
+                let value = this.points[ind].point.high ? 
+                    `<td style = "${value_style}">${this.points[ind].point.low.toFixed(1)} - ${this.points[ind].point.high.toFixed(1)}</td></tr>`
+                     :  
+                    `<td style = "${value_style}">${this.points[ind].y.toFixed(1)}</td></tr>`;
+                str += item + value ;
+        });
+            //  console.log ('test this', this);
+             return str + '</table>';
+            },
+        },
 
 // через атрибут title 
 
