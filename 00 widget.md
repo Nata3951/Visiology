@@ -35,6 +35,20 @@ $(`#widget-${w.general.renderTo} .va-widget-header`)
 ```javascript
 
 // добавим единицы измерения
+$(`#widget-${w.general.renderTo} .va-widget-header:not(:contains('руб'))`)
+.css({
+        'display': 'flex',
+        'justify-content': 'space-between',
+        'align-items':'end',
+    })
+.append(
+`<span style="color:${text_light}; font-weight: normal"> млн руб.</span>`
+);
+
+
+
+
+// добавим единицы измерения
 $(`#widget-${w.general.renderTo} .va-widget-header:not(:contains('руб'))`).append(
 `<span style="color:${text_light}; font-weight: normal"> млн руб./% </span>`
 );
