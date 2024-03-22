@@ -1,3 +1,19 @@
+# Дополнить объект
+
+```javascript
+plotOptions: { 
+    pie: {
+        ...wDup.plotOptions.pie,
+        animation: false,
+        dataLabels: {
+            distance: 0,
+            crop: false,
+            formatter: function() {
+                return this.y !== 0 ? this.y : ''
+            },
+```
+
+
 # Visiology vidget modifications
 
 ### text outline
