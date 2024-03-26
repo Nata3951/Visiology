@@ -1,5 +1,31 @@
 // https://www.highcharts.com/docs/chart-concepts/templating
 
+
+w.tooltip = {
+    shared: true,
+    useHTML: true,
+    formatter: function () {
+        // console.log ('test this', this);
+        let name = this.points[0].key;
+        let name_style = "font-size:12px;color:#757575;font-family:Open Sans; font-weight:bold";
+        let item_style = 'font-size:12px;font-family:Open Sans;padding:10';
+        let value_style = 'padding:0; text-align:right;font-weight:bold; font-size:12px;color:#212121;font-family:Open Sans';
+        let str = `<span style="${name_style}">${name}:</span><table>`;
+        this.points.forEach((el, ind) => {
+            
+            let item = `<tr><td style="${item_style}">${el.series.name}: </td>`;
+            let v = el.y.toFixed().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ');
+            let value =  `<td style = "${value_style}">${v}</td></tr>`;
+            str += item + value;
+            
+        })
+        return str;
+    }
+};
+
+
+
+
 const chart = Highcharts.chart({
     chart: w.general,
     xAxis: w.xAxis,
