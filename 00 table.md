@@ -64,6 +64,47 @@ $(`#table-${w.general.renderTo} th:contains("актические")`)
 
 ```
 
+### фиксируем шапку
+#### better
+```javascript
+// зафиксируем заголовок
+$('#table-' + w.general.renderTo)
+.css({
+'border-collapse' : 'separate',
+'border-spacing' : 0,
+});
+
+$('#table-' + w.general.renderTo + ' th')
+.css({
+position: 'sticky',
+top: -2,
+border: '0px solid white',
+});
+```
+
+### переименовываем верхний уровень шапки
+```javascript
+$("#table-"+w.general.renderTo+" > thead > tr.tablesorter-ignoreRow > th:nth-child(2) > div > span:nth-child(1)")[0].innerText = w.data.colNames[3][0];
+$("#table-"+w.general.renderTo+" > thead > tr.tablesorter-ignoreRow > th:nth-child(5) > div > span:nth-child(1)")[0].innerText = w.data.colNames[0][0];
+```
+
+#### old
+```javascript
+$('#table-' + w.general.renderTo).css({'border-collapse':'collapse'});
+document.getElementById("grid-"+ w.general.renderTo).addEventListener("scroll", function(){
+   var translate = "translate(0,"+this.scrollTop+"px)";
+   this.querySelector("thead").style.transform = translate;
+});
+```
+
+### переименовываем верхний уровень шапки
+```javascript
+$("#table-"+w.general.renderTo+" > thead > tr.tablesorter-ignoreRow > th:nth-child(2) > div > span:nth-child(1)")[0].innerText = w.data.colNames[3][0];
+$("#table-"+w.general.renderTo+" > thead > tr.tablesorter-ignoreRow > th:nth-child(5) > div > span:nth-child(1)")[0].innerText = w.data.colNames[0][0];
+```
+
+
+
 ## Другое
 
 ### заменить текст в ячейках
@@ -102,20 +143,7 @@ $(`#table-${w.general.renderTo} td`)
     document.querySelectorAll("#table-" + w.general.renderTo + " > tbody > tr").forEach(el => el.children[1].innerText > 0 ? el.children[1].style.color = "#4caf50" : el.children[1].style.color = "#ff8a80")
 ```
 
-### фиксируем шапку
-```javascript
-$('#table-' + w.general.renderTo).css({'border-collapse':'collapse'});
-document.getElementById("grid-"+ w.general.renderTo).addEventListener("scroll", function(){
-   var translate = "translate(0,"+this.scrollTop+"px)";
-   this.querySelector("thead").style.transform = translate;
-});
-```
 
-### переименовываем верхний уровень шапки
-```javascript
-$("#table-"+w.general.renderTo+" > thead > tr.tablesorter-ignoreRow > th:nth-child(2) > div > span:nth-child(1)")[0].innerText = w.data.colNames[3][0];
-$("#table-"+w.general.renderTo+" > thead > tr.tablesorter-ignoreRow > th:nth-child(5) > div > span:nth-child(1)")[0].innerText = w.data.colNames[0][0];
-```
     
 ### запрещаем перенос строк в ячейках и прячем остаток строки
 
