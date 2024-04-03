@@ -1,3 +1,5 @@
+// привести значение и год в колонки!
+
 const filterIdForTable = '576446c001fd4cf2b66bbe6fbeff7006'
 //цвет бара
 const barColor = '#2196F3'
