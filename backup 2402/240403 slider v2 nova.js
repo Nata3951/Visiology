@@ -1,8 +1,8 @@
 // привести значение и год в колонки!
 
-const filterIdForTable = '576446c001fd4cf2b66bbe6fbeff7006'
+const filterIdForTable = '4334a86edb1840f6ad727902c2b6b8ef'
 //цвет бара
-const barColor = '#2196F3'
+const barColor = '#4db6ac'
 
 const thisId = '#widget-' + w.general.renderTo + ' .va-widget-body'
 document.querySelector(thisId).innerHTML = `
