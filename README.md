@@ -1,3 +1,5 @@
+# Даты
+
 // отсечем данные, начиная с текущего дня
 let today = new Date(Date.now()).toISOString().split('T')[0]
 let cutoff = w.data.rows.findIndex(el => el >= today);
