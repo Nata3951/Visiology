@@ -9,54 +9,87 @@ let blue = '#1F6B9A', // '#1c4680',
     red = '#ff8a80',
     text_light = 'grey';
     
-// пропишем индексы серий 
-let fact = w.series[0],
-    planFirst = w.series[1],
-    planLast = w.series.at(-1);
- 
 
-// отформатируем серии 
+let wDup = JSON.parse(JSON.stringify(w));
+let planFirst = wDup.series[1];
+let planLast = wDup.series.at(-1);
 
-console.log('test w2', w)
+// уберем метки первого и последнего графика из названий промежуточных графиков
 
-w.series.forEach(el => {
-    // console.log('test name', el.name.split(' - ')[4])
-
-    // для первых графиков 
-    if (el.name.split(' - ').at(-2) == 1) {
-        el.color = darkGrey;
-        el.dashStyle = 'LongDash';
-        el.zIndex = 34;
-    }
-    
-    // для последних графиков 
-    else if (el.name.split(' - ').at(-1) == 1) {
-        el.color = darkGrey;
-        el.dashStyle = 'solid';
-        el.zIndex = 35;
-    }
-    
-    else {el.color = purple;}
-    
-    
-    // посчитаем длину массива с именем, т.к. в названии события также может быть дефис
+wDup.series.forEach(el => {
     let nameLength = el.name.split(' - ').length - 2;
     if (nameLength > 1) el.name = el.name.split(' - ').slice(1, nameLength).join(' - ');
-
-    el.lineWidth = 2;
-    el.zIndex = 30;
-    
 });
 
+// посчитаем, сколько пришло первых планов
+let countFirst = w.series
+    .map(el => +el.name.split(' - ').at(-2) || 0)
+    .reduce((val,acc) => val + acc, 0);
 
 
+// если первый план ровно один, используем исходный набор данных
+// если пришло больше одного первого плана, 
+// оставим только факт и соберем сумму первых и последних планов
+
+// создадим функцию для суммирования данных для первых и последних серий
+// newName = имя для новой серии, index = место, в котором находится 
+// признак новой / старой серии  в названии серии
+
+function summarize(newName, index) {
+
+    let newSeries = JSON.parse(JSON.stringify(w.series
+        .find(el => el.name.split(' - ').at(index) == 1)));
+
+    newSeries.name = newName;
+    newSeries.data.forEach(el => el.y = 0);
+
+    let dataPrep = w.series
+        .filter(el => el.name.split(' - ').at(index) == 1)
+        .map(el => el.data);
+
+    for (let i = 1; i < dataPrep.length; i++) {
+        dataPrep[i] = dataPrep[i].map(el => el.y || 0);
+        dataPrep[i].forEach((item, ind) => newSeries.data[ind].y += item);
+    }
+
+    wDup.series.push(newSeries);
+}
+
+
+if (countFirst > 1) {
+wDup.series = w.series.slice(0, 1);
+
+summarize("Первые графики", -2);
+planFirst = wDup.series[1];
+
+summarize("Последние графики", -1);
+planLast = wDup.series[2];
+}
+
+
+// отформатируем серии
+let fact = wDup.series[0];
 fact.color = blue;
 fact.type = 'area';
 fact.lineWidth = 3;
 fact.fillOpacity = 1/16;
 fact.zIndex = 60;
 
-w.tooltip = {
+
+planFirst.color = darkGrey;
+planFirst.dashStyle = 'LongDash';
+planFirst.zIndex = 34;
+
+planLast.color = darkGrey;
+planLast.dashStyle = 'Solid';
+planLast.zIndex = 35;
+
+// console.log('test planFirst', planFirst)
+// console.log('test x', wDup)
+    
+
+// отформатируем тултип
+wDup.tooltip = {
     shared: true,
     useHTML: true,
     formatter: function () {
@@ -81,17 +114,16 @@ w.tooltip = {
 
 let chart = Highcharts.chart({
     chart: w.general,
-    xAxis: w.xAxis,
-    yAxis: w.yAxis,
-    plotOptions: w.plotOptions,
-    series: w.series,
-    drilldown: w.drilldown,
-    legend: w.legend,
-    tooltip: w.tooltip
+    xAxis: wDup.xAxis,
+    yAxis: wDup.yAxis,
+    plotOptions: wDup.plotOptions,
+    series: wDup.series,
+    drilldown: wDup.drilldown,
+    legend: wDup.legend,
+    tooltip: wDup.tooltip
 });
 
 // отрисуем заливку
-
 
 //create a function to find where lines intersect, to color them correctly
 function intersect(x1, x2, y1, y2, y3, y4) {
@@ -180,9 +212,11 @@ function Event(year, event, y = 0) {
 }
 
 w.series.slice(1).forEach(el => {
-    let df = el.name.split(' - ');
-    let obj = new Event (df[0].slice(0,4), df.slice(2).join('-'));
+    let df = el.id.split('","');
+    console.log('test df', df);
+    let obj = new Event (df[2].slice(0,4), df[4]);
     if (obj.event) events.push(obj);
+    
 }
 );
 
@@ -212,7 +246,8 @@ chart.addSeries({
 
 chart.redraw();
 
-// console.log ('test events', events);
+console.log ('test w5', w);
+console.log ('test events', events);
 
 
 
