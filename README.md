@@ -1,5 +1,14 @@
 # Даты
 
+```javascript
+// уберем из факта текущий квартал
+
+let d = new Date(Date.now()) 
+let currentYear = d.getFullYear();
+let currentQuarter = Math.ceil((d.getMonth() + 1) / 3);
+let now_ = currentYear + ' - ' + currentQuarter;
+
+- - -  - - -
 // отсечем данные, начиная с текущего дня
 let today = new Date(Date.now()).toISOString().split('T')[0]
 let cutoff = w.data.rows.findIndex(el => el >= today);
@@ -7,6 +16,10 @@ w.data.values.forEach(el => el.splice(cutoff));
 
 let plan = w.data.values[0].reduce((acc, val) => acc + val, 0); 
 let fact = w.data.values[1].reduce((acc, val) => acc + val, 0); 
+
+```
+
+
 
 
 # Дублировать объект
