@@ -9,6 +9,12 @@ let plan = w.data.values[0].reduce((acc, val) => acc + val, 0);
 let fact = w.data.values[1].reduce((acc, val) => acc + val, 0); 
 
 
+# Дублировать объект
+```javascript
+// дублируем объект w
+const wDup = JSON.parse(JSON.stringify(w));
+```
+
 # Дополнить объект
 
 ```javascript
