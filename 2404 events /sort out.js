@@ -1,4 +1,5 @@
 // hide button
+// https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
 
 <input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
 <div id="text">Текст, чтобы спрятать </div>
