@@ -1,3 +1,25 @@
+# round dot
+```javascript
+$('<div>')
+.html(` 
+    рын.ставка / анализируемая ставка - 1 &emsp; 
+    <span class="dot" style="background-color: #aed581"> </span>  >20%  &emsp; 
+    <span class="dot" style="background-color: #ffea00 "> </span> от 0 до 20%  &emsp;
+    <span class="dot" style="background-color: #ff8a80 "> </span> <0%
+    `)
+
+$('.dot').css({
+    height: '0.9em',
+    width: '0.9em',
+    borderRadius: '50%',
+    display: 'inline-block', 
+    position: 'relative',
+    top: 2,
+})
+
+
+```
+
 # Даты
 
 ```javascript
