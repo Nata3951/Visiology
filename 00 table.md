@@ -239,16 +239,38 @@ function chooseColor(v) {
 }
 ```
 
+### раскрасить ячейки
+```javascript
+<div style="color: ${data[2][el] < 0 ? '#93a4ad' : '#49aff8'}" class="table-body-element table-body-element-value">${data[2][el] < 0 ? data[2][el] : `+${data[2][el]}`}</div>
+
+// v2
+
+// раскрасим ячейки
+[5,6,7].forEach(function(j) {
+    $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
+        $(td).css({
+            'color': 
+                td.innerText < 0 ? '#ff595a' : 
+                td.innerText === 0 ? '#49aff8' : '#56ad83'
+        });
+    }); 
+});
+
+```
+
 ### добавить цветные треугольники к тексту
 ```javascript
-[4,5].forEach(function (j) {
-   $(`#table-${w.general.renderTo} tr > td:nth-child(${j})`).each(function (i, td) {
-       td.innerHTML += '<span style="color: crimson"> ▲</span>';
-       console.log('test ', td.innerHTML);
-         $(td).css({
-            'background-color': colors[td.innerText[0]],
+[8].forEach(function(j) {
+    $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
+        let color_ = td.innerText < 0 ? darkRed : darkGreen;
+        let sign = td.innerText < 0 ? '&#9660;' : '&#9650;';
+        td.innerText = numberWithSpaces(td.innerText, 1, ',')+'%';
+        td.innerHTML +=`<span style="color: ${color_}"> ${sign} </span>`;
+        $(td).css({
+            textAlign: 'right',
+            paddingRight : 10,
         });
-    });
+    }); 
 });
 ```
 
@@ -467,21 +489,5 @@ $('#table-' + w.general.renderTo + '> tbody > tr:first-child > td').css({
 $('#grid-' + w.general.renderTo).css({'border-radius': '8px'})
 ```
 
-### раскрасить ячейки
-```javascript
-<div style="color: ${data[2][el] < 0 ? '#93a4ad' : '#49aff8'}" class="table-body-element table-body-element-value">${data[2][el] < 0 ? data[2][el] : `+${data[2][el]}`}</div>
 
-// v2
-[5,6,7].forEach(function(j) {
-    $('#table-' + w.general.renderTo + ' tr > td:nth-child(' + j + ')').each(function(i, td) {
-        $(td).css({
-            'color': 
-                td.innerText < 0 ? '#ff595a' : 
-                td.innerText === 0 ? '#49aff8' : '#56ad83'
-        });
-    }); 
-});
 
-```
-});
-```
