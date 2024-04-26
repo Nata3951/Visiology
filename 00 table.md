@@ -25,7 +25,8 @@ w.data.records.sort(function(a, b) {
 ```
 ### убираем лишнюю сортировку
 ```javascript
-// убираем лишнюю сортировку
+// убираем значки сортировки
+// NB над шапкой дополнительно положим заглушку
 w.data.columns.forEach((el) => {
     el.sortable = false;
 });
