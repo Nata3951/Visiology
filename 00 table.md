@@ -372,6 +372,7 @@ $('#table-' + w.general.renderTo + ' tr:nth-child(odd) td').css({
 ### снизу
 
 ```javascript
+// создадим сводную строку
 var final = document.getElementById('table-' + w.general.renderTo);
 var newRow = final.insertRow(-1);
 
@@ -380,25 +381,32 @@ var cell2 = newRow.insertCell(1);
 var cell3 = newRow.insertCell(2);
 var cell4 = newRow.insertCell(3);
 
-cell1.innerHTML = '<span style="font-family:Open Sans;padding-left:5px;font-size:14px">ИТОГО</span>';
 
-var sum = 0;
-for (var i = 0; i < w.data.records.length; i++) {
-  var value = w.data.records[i]["column 0"]; // извлекаем числовое значение из ячейки
-  if (!isNaN(value)) { // проверяем, что значение действительно является числом
-    sum += value;
-  }
+cell1.innerHTML = '<span style="padding-left:5px">ИТОГО</span>';
+
+// функция для подсчета суммы колонки в исходном наборе данных
+function columnSum(col_number) {
+    let sum = 0;
+    for (let i = 0; i < w.data.records.length; i++) {
+        let value = w.data.records[i]["column "+col_number]; // извлекаем числовое значение из ячейки
+        if (!isNaN(value))  sum += value;
+    }
+    return Math.round(sum).toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ');
 }
 
-cell2.innerHTML = '<span style="font-family:Open Sans;padding-left:5px;font-size:14px">'+ sum.toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ') +'</span>';
-cell3.innerHTML = '';
-cell4.innerHTML = '';
+cell2.innerHTML = columnSum(0);
+cell3.innerHTML = columnSum(1);
+cell4.innerHTML = columnSum(2);
 
-newRow.style.fontWeight = '500';
-newRow.style.backgroundColor = '#fff';
-newRow.style.position  = 'sticky'
-newRow.style.bottom  = 0
-newRow.style.height = '30px'; // устанавливаем высоту строки
+newRow.style.fontWeight = 'bold';
+newRow.style.fontFamily = 'Open Sans';
+newRow.style.fontSize = 13;
+// newRow.style.backgroundColor = 'pink';
+newRow.style.position  = 'sticky';
+newRow.style.bottom  = 1;
+// устанавливаем высоту строки
+newRow.style.height = '30px'; 
+newRow.style.border = '1px solid #fafafa';
 
 ```
 
