@@ -5,3 +5,9 @@ let filterVersionGuid = '094d5297c51d4a899bc4e9e3d8e4d28e';
 let dealSelected = visApi().getSelectedValues(filterDealGuid);
 let contractSelected = visApi().getSelectedValues(filterContractGuid);
 let versionSelected = visApi().getSelectedValues(filterVersionGuid);
+
+
+$('div')
+.attr({ class: 'box'})
+.css({backgroundColor : 'pink'})
+.appendTo(`#widget-${w.general.renderTo}`);
