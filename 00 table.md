@@ -272,7 +272,17 @@ function chooseColor(v) {
         });
     }); 
 });
+
+/// v2
+
+function setMarker(difference) {
+    if (difference < 0) return `<span style = "color:tomato">&#9660;</span>`;
+    else return `<span style = "color:green">&#9650;</span>`;
+}
+
 ```
+
+
 
 ### удалить столбцы
 
